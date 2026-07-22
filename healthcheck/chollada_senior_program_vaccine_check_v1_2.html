@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chollada Senior Program & Vaccine Check v1.0</title>
+<style>
+:root{--g:#7fcfb6;--gd:#2f8f79;--b:#1f5f99;--bg:#f6fbfa;--t:#1f2937;--m:#667085;--l:#e5ecea;--red:#b42318;--redbg:#fff1f3;--org:#b54708;--ok:#027a48;--dark:#12312b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",sans-serif;background:radial-gradient(circle at top left,rgba(127,207,182,.25),transparent 34%),var(--bg);color:var(--t)}
+header{text-align:center;padding:28px 16px 14px}.brand{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--l);border-radius:999px;padding:8px 14px;color:var(--gd);font-weight:900}.dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b))}
+h1{margin:14px 0 8px;font-size:clamp(28px,7vw,48px);letter-spacing:-.05em;color:#12312b;line-height:1.1}.sub{max-width:860px;margin:auto;color:var(--m);line-height:1.75}.wrap{width:min(1120px,calc(100% - 28px));margin:0 auto 44px}
+.notice{background:#fff7e6;border:1px solid #fedf89;color:#7a4f01;border-radius:18px;padding:14px;line-height:1.65;margin:12px 0 18px}.grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:start}
+.card{background:#fff;border:1px solid var(--l);border-radius:22px;box-shadow:0 10px 25px rgba(16,24,40,.07);padding:18px}.card h2{margin:0 0 6px;color:#12312b}.desc{color:var(--m);line-height:1.7;margin:0 0 14px;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.full{grid-column:1/-1}label{font-weight:850;color:#344054;font-size:14px}input,select{border:1px solid var(--l);border-radius:14px;padding:12px;font-size:16px;font-family:inherit;background:#fff}
+.checks{display:grid;gap:8px}.chk{display:grid;grid-template-columns:22px 1fr;gap:9px;background:#fbfefd;border:1px solid var(--l);border-radius:14px;padding:10px;line-height:1.5;font-size:14px}.chk input{width:18px;height:18px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}button,a.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:900;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.primary{background:linear-gradient(135deg,var(--gd),var(--b));color:#fff;flex:1}.ghost{background:#f8fafc;color:#475467;border:1px solid var(--l)}.outline{background:#fff;color:var(--gd);border:1px solid rgba(47,143,121,.35)}
+.empty{border:1px dashed var(--l);background:#fbfefd;border-radius:18px;padding:18px;color:var(--m);line-height:1.7}.hidden{display:none!important}
+.sectionBlock{border:1px solid var(--l);border-radius:22px;padding:16px;margin-bottom:14px;background:#fff;position:relative;overflow:hidden}.sectionBlock:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--g),var(--b))}.sectionHead{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.sectionIcon{width:34px;height:34px;border-radius:12px;background:#eef8ff;color:#175cd3;display:flex;align-items:center;justify-content:center;font-weight:950}.sectionTitle{font-size:18px;font-weight:950;color:#12312b;margin:0}.sectionSub{font-size:13px;color:var(--m);line-height:1.55;margin:2px 0 0}
+.pill{display:inline-flex;padding:5px 10px;border-radius:999px;font-weight:900;font-size:12px;margin:2px 4px 8px 0}.low{background:#ecfdf3;color:var(--ok);border:1px solid #abefc6}.mid{background:#fff7e6;color:var(--org);border:1px solid #fedf89}.high{background:#fff1f3;color:var(--red);border:1px solid #fecdca}.blue{background:#eef8ff;color:#175cd3;border:1px solid #b2ddff}
+.vaxGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.vaxCard{border:1px solid var(--l);border-radius:18px;padding:13px;background:#fff}.vaxCard.reco{background:#eef8ff;border-color:#84caff;box-shadow:0 8px 20px rgba(46,144,250,.10)}.vaxTitle{font-weight:950;color:#12312b}.vaxText{font-size:13px;color:#475467;line-height:1.55;margin-top:4px}.recoTag{display:inline-flex;background:#d1e9ff;color:#175cd3;border:1px solid #84caff;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:950;margin-left:4px}.riskTag{display:inline-flex;background:#fff7e6;color:#b54708;border:1px solid #fedf89;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;margin-top:6px}
+.pkgGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pkgCard{background:linear-gradient(135deg,#12312b,#1f5f99);color:#fff;border-radius:22px;padding:18px;box-shadow:0 12px 28px rgba(16,24,40,.16)}.pkgCard h3{margin:0 0 8px;color:#fff}.pkgCard p{margin:0;color:#d0d5dd;line-height:1.55}.pkgCard button{margin-top:12px;background:#fff;color:#12312b;width:100%}
+.packagePage{margin-top:16px}.detailShell{background:#fff;border-radius:24px;border:1px solid var(--l);box-shadow:0 18px 45px rgba(16,24,40,.14);overflow:hidden}.detailHero{background:linear-gradient(135deg,#12312b,#1f5f99);color:#fff;padding:20px}.detailHero h2{margin:0;color:#fff}.detailHero p{color:#d0d5dd;margin:8px 0 0;line-height:1.6}.detailBody{padding:18px}.testTable{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--l);border-radius:16px;overflow:hidden;margin-top:10px}.testTable th,.testTable td{padding:10px;border-bottom:1px solid var(--l);text-align:left;vertical-align:top}.testTable th{background:#f8fafc}.testTable tr:last-child td{border-bottom:0}.testTable tr.addonRow td{background:#eef8ff;border-left:6px solid #2e90fa;font-weight:800}.warn{font-size:12px;color:#7a4f01;background:#fff7e6;border:1px solid #fedf89;border-radius:14px;padding:10px;margin-top:10px}
+.leadbox{background:#f8fafc;border:1px solid var(--l);border-radius:18px;padding:14px;margin-top:12px}.leadform{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.serviceChecks{grid-column:1/-1;display:grid;gap:8px}.leadform input.full{grid-column:1/-1}.status{font-size:13px;margin-top:8px;color:var(--m)}
+ul{line-height:1.65;color:#344054;margin:8px 0 0}.mini{font-size:12px;color:var(--m);line-height:1.6;margin-top:8px}
+@media(max-width:940px){.grid,.vaxGrid,.pkgGrid{grid-template-columns:1fr}}@media(max-width:620px){.fgrid,.leadform{grid-template-columns:1fr}.actions button,.actions a{width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span>CHOLLADA hospital</div>
+  <h1>Senior Program & Vaccine Check</h1>
+  <p class="sub">ประเมินวัคซีนผู้ใหญ่และผู้สูงอายุ พร้อมราคาเบื้องต้น และแนะนำ Adult & Senior Vaccine Review / Senior Health Check</p>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <b>หมายเหตุ:</b> เครื่องมือนี้เป็นการทบทวนวัคซีนเบื้องต้น ไม่ใช่คำสั่งฉีดวัคซีนจริง กรุณานำสมุดวัคซีน/ประวัติวัคซีนและรายชื่อยาที่ใช้อยู่มาปรึกษาแพทย์หรือเภสัชกร โดยเฉพาะผู้มีภูมิคุ้มกันต่ำ ตั้งครรภ์ แพ้วัคซีน หรือใช้ยากดภูมิ
+  </div>
+
+  <section id="assessment" class="grid">
+    <form id="seniorForm" class="card">
+      <h2>ข้อมูลสำหรับประเมิน</h2>
+      <p class="desc">กรอกข้อมูลที่ทราบ ระบบจะสรุปวัคซีนที่ควรทบทวนและบริการที่เหมาะสม</p>
+      <div class="fgrid">
+        <div class="field"><label>อายุ</label><input name="age" type="number" min="18" max="110" placeholder="เช่น 68"></div>
+        <div class="field"><label>เพศ</label><select name="sex"><option value="">ไม่ระบุ</option><option value="m">ชาย</option><option value="f">หญิง</option></select></div>
+        <div class="field"><label>ได้รับวัคซีนไข้หวัดใหญ่ปีนี้แล้วหรือยัง?</label><select name="flu"><option value="u">ไม่แน่ใจ/ยังไม่ได้</option><option value="y">ได้แล้ว</option></select></div>
+        <div class="field"><label>วัคซีนบาดทะยัก/คอตีบล่าสุด</label><select name="td"><option value="u">ไม่แน่ใจ</option><option value="lt10">ภายใน 10 ปี</option><option value="ge10">เกิน 10 ปีแล้ว</option></select></div>
+        <div class="field"><label>วัคซีนปอดอักเสบ</label><select name="pneumo"><option value="u">ไม่แน่ใจ/ไม่เคย</option><option value="y">เคยได้รับแล้ว</option></select></div>
+        <div class="field"><label>วัคซีนงูสวัด</label><select name="zoster"><option value="u">ไม่แน่ใจ/ไม่เคย</option><option value="y">เคยได้รับแล้ว</option></select></div>
+
+        <div class="field full"><label>โรคประจำตัว / กลุ่มเสี่ยง</label><div class="checks">
+          <label class="chk"><input type="checkbox" name="dm">เบาหวาน</label>
+          <label class="chk"><input type="checkbox" name="heart">โรคหัวใจ / หลอดเลือดสมอง / ความดันโลหิตสูง</label>
+          <label class="chk"><input type="checkbox" name="lung">โรคปอดเรื้อรัง / หอบหืด / COPD</label>
+          <label class="chk"><input type="checkbox" name="ckd">โรคไตเรื้อรัง / ฟอกไต</label>
+          <label class="chk"><input type="checkbox" name="liver">โรคตับเรื้อรัง</label>
+          <label class="chk"><input type="checkbox" name="immuno">ภูมิคุ้มกันต่ำ / ใช้ยากดภูมิ / มะเร็งที่กำลังรักษา</label>
+          <label class="chk"><input type="checkbox" name="caregiver">อยู่ร่วมกับเด็กเล็ก ผู้สูงอายุ หรือเป็นผู้ดูแลผู้ป่วย</label>
+        </div></div>
+
+        <div class="field full"><label>อาการ/ปัญหาที่อยากประเมินร่วมใน Senior Program</label><div class="checks">
+          <label class="chk"><input type="checkbox" name="fall">เคยหกล้ม เดินไม่มั่นคง หรือกลัวล้ม</label>
+          <label class="chk"><input type="checkbox" name="memory">หลงลืม นอนหลับไม่ดี หรือกังวลเรื่องสมอง/ความจำ</label>
+          <label class="chk"><input type="checkbox" name="polypharm">กินยาหลายชนิด อยากทบทวนยา</label>
+        </div></div>
+      </div>
+      <div class="actions">
+        <button class="primary" type="submit">ดูผลประเมิน</button>
+        <button class="ghost" type="button" onclick="resetForm()">ล้างข้อมูล</button>
+      </div>
+    </form>
+
+    <aside class="card">
+      <h2>ผลประเมิน</h2>
+      <p class="desc">แบ่งเป็นวัคซีนที่ควรฉีด วัคซีนรอทบทวน และ Program ที่เหมาะกับคุณ</p>
+      <div id="out" class="empty">กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”</div>
+    </aside>
+  </section>
+
+  <section id="packagePage" class="packagePage hidden card">
+    <div class="actions">
+      <button class="ghost" type="button" onclick="backToAssessment()">← กลับผลประเมิน</button>
+      <a class="btn outline" href="tel:025717799">โทร 02 571 7799</a>
+    </div>
+    <div id="pkgOut"></div>
+  </section>
+</main>
+
+<script>
+const LEAD_ENDPOINT = "";
+let currentPlan = null;
+let lastSummary = "";
+
+const vaccines = {
+  flu:{name:"Influenza vaccine", th:"วัคซีนไข้หวัดใหญ่", timing:"ปีละ 1 ครั้ง", forText:"ผู้ใหญ่ โดยเฉพาะอายุ ≥65 ปี หรือมีโรคประจำตัว", note:"แนะนำทบทวนทุกปี", price:750, priceText:"750 บาท/เข็ม"},
+  pneumo:{name:"Pneumococcal vaccine 20-valent", th:"วัคซีนป้องกันปอดอักเสบ/IPD 20 สายพันธุ์", timing:"พิจารณาตามอายุและประวัติวัคซีนเดิม", forText:"อายุ ≥65 ปี หรือมีโรคหัวใจ ปอด เบาหวาน ไต ตับ ภูมิคุ้มกันต่ำ", note:"ควรให้แพทย์เลือกชนิดและลำดับวัคซีนตามประวัติเดิม", price:3500, priceText:"3,500 บาท/เข็ม"},
+  zoster:{name:"Shingrix", th:"วัคซีนงูสวัด Shingrix", timing:"ฉีดทั้งหมด 2 เข็ม โดยทั่วไปห่างกัน 2–6 เดือน", forText:"ผู้ใหญ่อายุ ≥50 ปี โดยเฉพาะผู้สูงอายุหรือมีโรคประจำตัว", note:"ช่วยลดความเสี่ยงงูสวัดและอาการปวดปลายประสาทหลังงูสวัด", price:5800, priceText:"5,800 บาท/เข็ม รวม 2 เข็ม 11,600 บาท"},
+  tdap:{name:"dT / Td/Tdap", th:"วัคซีนบาดทะยัก-คอตีบ/ไอกรน", timing:"กระตุ้นทุก 10 ปี", forText:"ผู้ใหญ่ทุกคน โดยเฉพาะผู้ดูแลเด็กเล็ก/ผู้สูงอายุ", note:"ถ้าไม่แน่ใจหรือเกิน 10 ปีควรทบทวน", price:200, priceText:"200 บาท/เข็ม"},
+  rsv:{name:"RSV vaccine", th:"วัคซีน RSV", timing:"พิจารณาในผู้สูงอายุ/กลุ่มเสี่ยง", forText:"ผู้สูงอายุ โดยเฉพาะมีโรคหัวใจ ปอด เบาหวาน ไต หรืออยู่ในสถานดูแล", note:"ควรปรึกษาแพทย์เรื่องความเหมาะสม", price:7800, priceText:"7,800 บาท/เข็ม"},
+  hbv:{name:"Hepatitis B vaccine", th:"วัคซีนไวรัสตับอักเสบบี", timing:"ตรวจภูมิ/ประวัติเดิมก่อนพิจารณา", forText:"เบาหวาน โรคไต ฟอกไต โรคตับ หรือยังไม่เคยฉีด", note:"อาจพิจารณาตรวจ HBsAg/Anti-HBs ก่อน", price:600, priceText:"600 บาท/เข็ม"},
+  dengue:{name:"Dengue vaccine", th:"วัคซีนไข้เลือดออก", timing:"ฉีดทั้งหมด 2 เข็ม ตามชนิดวัคซีนและคำแนะนำแพทย์", forText:"ผู้ที่สนใจหรือมีความเสี่ยง ควรปรึกษาแพทย์ก่อนฉีด", note:"ควรทบทวนข้อบ่งชี้และข้อควรระวังรายบุคคล", price:2500, priceText:"2,500 บาท/เข็ม รวม 2 เข็ม 5,000 บาท"}
+};
+
+const seniorServices = {
+  vaccineReview:{name:"Adult & Senior Vaccine Review", desc:"ทบทวนประวัติวัคซีน วางแผนวัคซีนที่ควรได้รับ จัดลำดับการฉีด และสรุปราคาวัคซีนที่เหมาะสม"},
+  seniorCheck:{name:"Senior Health Check", desc:"ตรวจสุขภาพผู้สูงอายุ พร้อมประเมิน fall/frailty/nutrition, memory/sleep และ medication review เป็นบริการเสริมในโปรแกรมเดียว"}
+};
+
+function fd(){const f=document.getElementById("seniorForm"),o={};new FormData(f).forEach((v,k)=>o[k]=v);f.querySelectorAll("input[type=checkbox]").forEach(c=>o[c.name]=c.checked);return o}
+function n(x){let v=parseFloat(x);return isFinite(v)?v:null}
+function uniq(a){return [...new Set(a)]}
+function assess(o){
+  const age=n(o.age)||0;
+  const riskChronic=o.dm||o.heart||o.lung||o.ckd||o.liver||o.immuno;
+  let rec=[], consider=[], alerts=[], services=[];
+
+  // แสดง Vaccine Review ให้ทุกคนที่มีวัคซีนที่ควรฉีด/รอทบทวน หรือสนใจประเมิน
+  services.push("vaccineReview");
+
+  if(age>=65 || riskChronic || o.caregiver){
+    if(o.flu!=="y") rec.push("flu"); else consider.push("flu");
+  }else{
+    consider.push("flu");
+  }
+
+  if(age>=65 || o.dm||o.heart||o.lung||o.ckd||o.liver||o.immuno){
+    if(o.pneumo!=="y") rec.push("pneumo"); else consider.push("pneumo");
+  }
+
+  if(age>=50){
+    if(o.zoster!=="y") rec.push("zoster"); else consider.push("zoster");
+  }
+
+  if(o.td==="u" || o.td==="ge10") rec.push("tdap"); else consider.push("tdap");
+
+  if(age>=60 || o.heart||o.lung||o.dm||o.ckd||o.immuno) consider.push("rsv");
+
+  if(o.dm||o.ckd||o.liver||o.immuno) consider.push("hbv");
+
+  // Dengue เป็น optional ให้รอทบทวนในผู้ใหญ่ที่สนใจ/มีความเสี่ยง
+  consider.push("dengue");
+
+  if(o.immuno) alerts.push("มีภูมิคุ้มกันต่ำ/ใช้ยากดภูมิ ควรปรึกษาแพทย์ก่อนวัคซีนชนิดเชื้อเป็นและจัดลำดับวัคซีนเฉพาะราย");
+
+  // Senior Health Check: แสดงเฉพาะอายุ 60 ปีขึ้นไปเท่านั้น
+  if(age>=60){
+    services.push("seniorCheck");
+  }
+
+  rec=uniq(rec); consider=uniq(consider.filter(x=>!rec.includes(x))); services=uniq(services);
+  return {age, rec, consider, alerts, services};
+}
+function vaccineCards(keys, type){
+  if(!keys.length) return `<div class="mini">ยังไม่มีรายการในกลุ่มนี้จากข้อมูลที่กรอก</div>`;
+  return `<div class="vaxGrid">${keys.map(k=>{
+    const v=vaccines[k];
+    const label = type==='rec' ? 'ควรฉีด' : 'รอทบทวน';
+    return `<div class="vaxCard ${type==='rec'?'reco':''}"><div class="vaxTitle">${v.th} <span class="recoTag">${label}</span></div><div class="vaxText"><b>${v.name}</b><br>ช่วงเวลา: ${v.timing}<br>${v.forText}</div><div class="riskTag">${v.note}</div><div class="riskTag" style="background:#eef8ff;color:#175cd3;border-color:#b2ddff">ราคา: ${v.priceText}</div></div>`;
+  }).join("")}</div>`;
+}
+function serviceCards(keys){
+  return `<div class="pkgGrid">${keys.map(k=>{
+    const s=seniorServices[k];
+    return `<div class="pkgCard"><h3>${s.name}</h3><p>${s.desc}</p><button type="button" onclick="showProgram('${k}')">ดูรายละเอียดบริการ</button></div>`;
+  }).join("")}</div>`;
+}
+function evaluate(o){
+  const plan=assess(o);
+  currentPlan=plan;
+  lastSummary=[`Recommend: ${plan.rec.join(",")}`,`Review: ${plan.consider.join(",")}`,`Services: ${plan.services.join(",")}`].join(" | ");
+  let html="";
+  if(plan.alerts.length){
+    html+=`<div class="sectionBlock"><div class="sectionHead"><div class="sectionIcon">!</div><div><h3 class="sectionTitle">ข้อควรระวัง</h3><p class="sectionSub">ควรปรึกษาแพทย์ก่อนจัดวัคซีน</p></div></div><ul>${plan.alerts.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+  }
+  html+=`<div class="sectionBlock"><div class="sectionHead"><div class="sectionIcon">1</div><div><h3 class="sectionTitle">วัคซีนที่ควรฉีด</h3><p class="sectionSub">รายการที่น่าจะถึงเวลาฉีดจากข้อมูลที่กรอก</p></div></div>${vaccineCards(plan.rec,"rec")}</div>`;
+  html+=`<div class="sectionBlock"><div class="sectionHead"><div class="sectionIcon">2</div><div><h3 class="sectionTitle">วัคซีนรอทบทวน</h3><p class="sectionSub">อาจเหมาะสม แต่ควรทบทวนประวัติเดิมและความจำเป็นรายบุคคลก่อน</p></div></div>${vaccineCards(plan.consider,"review")}</div>`;
+  let seniorNote = "";
+  if(plan.age<60){
+    seniorNote = `<div class="mini">Senior Health Check จะแสดงเมื่ออายุ 60 ปีขึ้นไป หากต้องการปรึกษาเฉพาะเรื่อง สามารถเลือก Adult & Senior Vaccine Review หรือโทรสอบถามเพิ่มเติม</div>`;
+  }
+  html+=`<div class="sectionBlock"><div class="sectionHead"><div class="sectionIcon">3</div><div><h3 class="sectionTitle">Program ที่อาจเหมาะกับคุณ</h3><p class="sectionSub">เหลือเฉพาะ Vaccine Review และ Senior Health Check</p></div></div>${serviceCards(plan.services)}${seniorNote}</div>`;
+  html+=leadBox();
+  return html;
+}
+function showProgram(k){
+  const s=seniorServices[k];
+  const vaxRows=[...currentPlan.rec,...currentPlan.consider].map(x=>vaccines[x]);
+  const seniorExtra = k==="seniorCheck" ? `<h3>บริการเสริมใน Senior Health Check</h3><table class="testTable"><thead><tr><th>บริการเสริม</th></tr></thead><tbody><tr><td>Fall / Frailty Review — ประเมินหกล้ม เดินไม่มั่นคง และความเสี่ยงเปราะบาง</td></tr><tr><td>Memory & Sleep Screening — คัดกรองความจำ การนอนหลับ และอารมณ์เบื้องต้น</td></tr><tr><td>Medication Review — ทบทวนยาหลายชนิด ลดความซ้ำซ้อน และดูยาที่เสี่ยงในผู้สูงอายุ</td></tr></tbody></table>` : "";
+  document.getElementById("assessment").classList.add("hidden");
+  document.getElementById("packagePage").classList.remove("hidden");
+  document.getElementById("pkgOut").innerHTML=`<div class="detailShell"><div class="detailHero"><h2>${s.name}</h2><p>${s.desc}</p></div><div class="detailBody"><h3>สิ่งที่จะได้รับ</h3><table class="testTable"><thead><tr><th>รายการ</th></tr></thead><tbody><tr><td>ทบทวนประวัติวัคซีนและโรคประจำตัว</td></tr><tr><td>วางแผนวัคซีนที่ควรได้รับและลำดับการฉีด</td></tr><tr><td>สรุปรายการวัคซีนที่ควรฉีด/รอทบทวน พร้อมราคาโดยประมาณ</td></tr><tr><td>ให้คำแนะนำเรื่องข้อควรระวังและการติดตามหลังฉีด</td></tr>${k==="seniorCheck"?'<tr><td>ตรวจสุขภาพผู้สูงอายุและประเมินปัญหาที่พบบ่อยในวัยสูงอายุ</td></tr>':""}</tbody></table>${seniorExtra}<h3>วัคซีนที่ควรนำมาคุยกับแพทย์/พยาบาล</h3><table class="testTable"><thead><tr><th>วัคซีน</th><th>ช่วงเวลา/หมายเหตุ</th><th>ราคา</th></tr></thead><tbody>${vaxRows.map(v=>`<tr class="addonRow"><td>${v.th}<br><span class="mini">${v.name}</span></td><td>${v.timing}<br>${v.note}</td><td>${v.priceText}</td></tr>`).join("")}</tbody></table><div class="warn">*ราคาวัคซีนเป็นราคาต่อเข็มตามข้อมูลที่ระบุ และอาจเปลี่ยนแปลงตามชนิดวัคซีน จำนวนเข็ม ประวัติวัคซีนเดิม และค่าแพทย์/ค่าบริการ กรุณาติดต่อโรงพยาบาลเพื่อยืนยันราคาปัจจุบัน</div>${leadBox(k)}<div class="actions"><a class="btn primary" href="chollada_booking_google_sheet_connected.html">ขอนัดหมาย</a><a class="btn outline" href="tel:025717799">โทรสอบถาม</a></div></div></div>`;
+}
+function backToAssessment(){document.getElementById("packagePage").classList.add("hidden");document.getElementById("assessment").classList.remove("hidden")}
+function leadBox(programKey=""){
+  return `<div class="leadbox"><b>สนใจให้ทีมโรงพยาบาลติดต่อกลับหรือไม่?</b><p class="mini">กรุณาทิ้งชื่อ เบอร์โทรศัพท์ และหัวข้อที่ต้องการให้เจ้าหน้าที่ติดต่อกลับ</p><label class="chk"><input id="leadConsent" type="checkbox" onchange="document.getElementById('leadForm').classList.toggle('hidden',!this.checked)">ยินยอมให้โรงพยาบาลชลลดาติดต่อกลับ</label><div id="leadForm" class="leadform hidden"><div class="serviceChecks"><label class="chk"><input type="checkbox" name="interest" value="Adult and Senior Vaccine Review" checked>Adult & Senior Vaccine Review</label><label class="chk"><input type="checkbox" name="interest" value="Senior Health Check">Senior Health Check</label><label class="chk"><input type="checkbox" name="interest" value="Vaccine price inquiry">สอบถามราคาวัคซีน/วางแผนการฉีด</label><label class="chk"><input type="checkbox" name="interest" value="Doctor consultation">ต้องการปรึกษาแพทย์ก่อนฉีดวัคซีน</label></div><input id="leadName" placeholder="ชื่อ-นามสกุล / ชื่อที่สะดวกให้ติดต่อ"><input id="leadPhone" placeholder="เบอร์โทรศัพท์"><input id="leadTopic" class="full" placeholder="หัวข้อที่ต้องการให้ติดต่อกลับ เช่น วัคซีนงูสวัด, RSV, ตรวจสุขภาพผู้สูงอายุ"><button class="primary" type="button" onclick="sendLead('${programKey}')">ส่งข้อมูลให้ติดต่อกลับ</button><div id="leadStatus" class="status"></div></div></div>`;
+}
+async function sendLead(programKey){
+  const name=document.getElementById("leadName").value.trim(), phone=document.getElementById("leadPhone").value.trim();
+  const interests=[...document.querySelectorAll("input[name=interest]:checked")].map(x=>x.value).join(", ");
+  const leadTopic=(document.getElementById("leadTopic")?.value||"").trim();
+  const st=document.getElementById("leadStatus");
+  if(!name||!phone){st.textContent="กรุณากรอกชื่อและเบอร์โทร";return}
+  if(!interests && !leadTopic){st.textContent="กรุณาเลือกหรือกรอกหัวข้อที่ต้องการให้ติดต่อกลับ";return}
+  const payload={submittedAt:new Date().toLocaleString("th-TH"),topic:"Senior Program / Vaccine",program:programKey,interest:interests,leadTopic:leadTopic,resultSummary:lastSummary,name,phone,status:"รอติดต่อกลับ",source:"Chollada Senior Program Vaccine Check"};
+  try{
+    if(LEAD_ENDPOINT){await fetch(LEAD_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)})}
+    st.textContent="ส่งข้อมูลเรียบร้อย ทีมงานจะติดต่อกลับ";
+  }catch(e){st.textContent="ส่งข้อมูลไม่สำเร็จ กรุณาโทร 02 571 7799"}
+}
+function resetForm(){document.getElementById("seniorForm").reset();document.getElementById("out").className="empty";document.getElementById("out").innerHTML="กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”"}
+document.getElementById("seniorForm").addEventListener("submit",e=>{e.preventDefault();const out=document.getElementById("out");out.className="";out.innerHTML=evaluate(fd());out.scrollIntoView({behavior:"smooth",block:"nearest"})});
+</script>
+</body>
+</html>
