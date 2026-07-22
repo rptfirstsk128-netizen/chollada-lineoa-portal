@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chollada Adult Cancer Screening Check v1.2</title>
+<style>
+:root{--g:#7fcfb6;--gd:#2f8f79;--b:#1f5f99;--bg:#f6fbfa;--t:#1f2937;--m:#667085;--l:#e5ecea;--red:#b42318;--redbg:#fff1f3;--org:#b54708;--ok:#027a48;--dark:#12312b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",sans-serif;background:radial-gradient(circle at top left,rgba(127,207,182,.25),transparent 34%),var(--bg);color:var(--t)}
+header{text-align:center;padding:28px 16px 14px}.brand{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--l);border-radius:999px;padding:8px 14px;color:var(--gd);font-weight:900}.dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b)}
+h1{margin:14px 0 8px;font-size:clamp(28px,7vw,48px);letter-spacing:-.05em;color:#12312b;line-height:1.1}.sub{max-width:860px;margin:auto;color:var(--m);line-height:1.75}
+.wrap{width:min(1120px,calc(100% - 28px));margin:0 auto 44px}.notice{background:#fff7e6;border:1px solid #fedf89;color:#7a4f01;border-radius:18px;padding:14px;line-height:1.65;margin:12px 0 18px}
+.grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:start}.card{background:#fff;border:1px solid var(--l);border-radius:22px;box-shadow:0 10px 25px rgba(16,24,40,.07);padding:18px}.card h2{margin:0 0 6px;color:#12312b}.desc{color:var(--m);line-height:1.7;margin:0 0 14px;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.full{grid-column:1/-1}
+label{font-weight:850;color:#344054;font-size:14px}input,select{border:1px solid var(--l);border-radius:14px;padding:12px;font-size:16px;font-family:inherit;background:#fff}
+.checks{display:grid;gap:8px}.chk{display:grid;grid-template-columns:22px 1fr;gap:9px;background:#fbfefd;border:1px solid var(--l);border-radius:14px;padding:10px;line-height:1.5;font-size:14px}.chk input{width:18px;height:18px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}button,a.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:900;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.primary{background:linear-gradient(135deg,var(--gd),var(--b));color:#fff;flex:1}.ghost{background:#f8fafc;color:#475467;border:1px solid var(--l)}.outline{background:#fff;color:var(--gd);border:1px solid rgba(47,143,121,.35)}
+.empty{border:1px dashed var(--l);background:#fbfefd;border-radius:18px;padding:18px;color:var(--m);line-height:1.7}.res{border:1px solid var(--l);border-radius:18px;padding:14px;margin-bottom:12px;background:#fff}.res h3{margin:0 0 8px;color:#12312b}.riskHigh{background:var(--redbg);border:1px solid #fecdca;border-left:6px solid var(--red)}.riskHigh h3{color:var(--red)}
+.pill{display:inline-flex;padding:5px 10px;border-radius:999px;font-weight:900;font-size:12px;margin-bottom:8px}.low{background:#ecfdf3;color:var(--ok);border:1px solid #abefc6}.mid{background:#fff7e6;color:var(--org);border:1px solid #fedf89}.high{background:#fff1f3;color:var(--red);border:1px solid #fecdca}
+ul{line-height:1.65;color:#344054;margin:8px 0 0}.mini{font-size:12px;color:var(--m);line-height:1.6;margin-top:8px}.hidden{display:none!important}
+.sectionBlock{border:1px solid var(--l);border-radius:22px;padding:16px;margin-bottom:14px;background:#fff;position:relative;overflow:hidden}.sectionBlock:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--g),var(--b))}.sectionHead{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.sectionIcon{width:34px;height:34px;border-radius:12px;background:#eef8ff;color:#175cd3;display:flex;align-items:center;justify-content:center;font-weight:950}.sectionTitle{font-size:18px;font-weight:950;color:#12312b;margin:0}.sectionSub{font-size:13px;color:var(--m);line-height:1.55;margin:2px 0 0}
+.recommendBox{background:#eef8ff;border:1px solid #b2ddff;border-left:6px solid #2e90fa;border-radius:18px;padding:14px;margin:10px 0}.recommendBox h3{margin:0 0 8px;color:#1849a9}.recList{display:grid;gap:8px}.recItem{background:#fff;border:1px solid #d1e9ff;border-radius:14px;padding:10px;color:#194185;font-weight:850}.blueTag{display:inline-flex;background:#d1e9ff;color:#175cd3;border:1px solid #84caff;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:950;margin-right:6px}
+.addonGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.addonCard{border:1px solid var(--l);border-radius:18px;padding:13px;background:#fff;transition:.18s;min-height:106px}.addonCard:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(16,24,40,.08)}.addonCard.reco{background:#eef8ff;border-color:#84caff;box-shadow:0 8px 20px rgba(46,144,250,.12)}.addonCard label{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start}.addonCard input{width:19px;height:19px;margin-top:2px}.addonName{font-weight:950;color:#12312b}.cancerText{font-size:13px;color:#475467;margin-top:5px;line-height:1.5}.recoTag{display:inline-flex;background:#d1e9ff;color:#175cd3;border:1px solid #84caff;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:950;margin-left:4px}
+.pkgSummary{background:linear-gradient(135deg,#12312b,#1f5f99);color:#fff;border-radius:22px;padding:18px;box-shadow:0 12px 28px rgba(16,24,40,.16);margin-top:14px}.pkgSummary h3{margin:0 0 8px;color:#fff}.pkgSummary p{margin:0;color:#d0d5dd;line-height:1.55}.pkgSummary .price{font-size:32px;font-weight:950;margin-top:8px}.pkgSummary .old{text-decoration:line-through;color:#cfd7e6;font-size:13px}.pkgSummary button{margin-top:12px;background:#fff;color:#12312b;width:100%}
+.packagePage{margin-top:16px}.detailShell{background:#fff;border-radius:24px;border:1px solid var(--l);box-shadow:0 18px 45px rgba(16,24,40,.14);overflow:hidden}.detailHero{background:linear-gradient(135deg,#12312b,#1f5f99);color:#fff;padding:20px}.detailHero h2{margin:0;color:#fff}.detailHero p{color:#d0d5dd;margin:8px 0 0;line-height:1.6}.detailBody{padding:18px}.testTable{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--l);border-radius:16px;overflow:hidden;margin-top:10px}.testTable th,.testTable td{padding:10px;border-bottom:1px solid var(--l);text-align:left;vertical-align:top}.testTable th{background:#f8fafc}.testTable tr:last-child td{border-bottom:0}.testTable tr.addonRow td{background:#fff7e6;border-left:6px solid #f79009;font-weight:800}.addonBadge{display:inline-flex;background:#fff1f3;color:#b42318;border:1px solid #fecdca;border-radius:999px;padding:2px 8px;font-size:12px;font-weight:900;margin-left:6px}
+.money{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.moneyBox{background:#f8fafc;border:1px solid var(--l);border-radius:16px;padding:12px}.totalBox{background:#12312b;color:#fff;border-radius:18px;padding:16px;margin-top:12px}.totalBox .price{font-size:34px;font-weight:950}.save{color:#12b76a;font-weight:950}.warn{font-size:12px;color:#7a4f01;background:#fff7e6;border:1px solid #fedf89;border-radius:14px;padding:10px;margin-top:10px}
+.leadbox{background:#f8fafc;border:1px solid var(--l);border-radius:18px;padding:14px;margin-top:12px}.leadform{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.serviceChecks{grid-column:1/-1;display:grid;gap:8px}.status{font-size:13px;margin-top:8px;color:var(--m)}
+@media(max-width:940px){.grid,.money,.addonGrid{grid-template-columns:1fr}}@media(max-width:620px){.fgrid,.leadform{grid-template-columns:1fr}.actions button,.actions a{width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span>CHOLLADA hospital</div>
+  <h1>Adult Cancer Screening Check</h1>
+  <p class="sub">ประเมินว่าควรคัดกรองมะเร็งอะไร แล้วเลือก add-on เข้ากับ Package ตรวจสุขภาพ Plus เพื่อดูรายการตรวจและราคาสุทธิ</p>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <b>หมายเหตุ:</b> เครื่องมือนี้ใช้เพื่อแนะนำการคัดกรองเบื้องต้น ไม่ใช่การวินิจฉัย หากมีอาการเตือนควรพบแพทย์เพื่อประเมิน ไม่ควรรอการคัดกรองตามรอบปกติ
+  </div>
+
+  <section id="assessment" class="grid">
+    <form id="caForm" class="card">
+      <h2>ข้อมูลสำหรับประเมิน</h2>
+      <p class="desc">ระบบจะสรุปชนิดมะเร็งที่ควรคัดกรอง และเตรียม add-on ที่เหมาะสมไว้ให้เลือก</p>
+      <div class="fgrid">
+        <div class="field"><label>อายุ</label><input name="age" type="number" min="18" max="100" placeholder="เช่น 55"></div>
+        <div class="field"><label>เพศ</label><select name="sex"><option value="">ไม่ระบุ</option><option value="m">ชาย</option><option value="f">หญิง</option></select></div>
+        <div class="field"><label>ประวัติสูบบุหรี่</label><select name="smoke" onchange="togglePack(this.value)"><option value="none">ไม่สูบ</option><option value="quit15">เคยสูบแต่หยุดมานานกว่า 15 ปี</option><option value="active">สูบอยู่หรือหยุดมาน้อยกว่า 15 ปี</option></select></div>
+        <div id="packField" class="field hidden"><label>สูบสะสมประมาณ</label><select name="pack"><option value="unknown">ไม่แน่ใจ</option><option value="lt20">น้อยกว่า 20 pack-year</option><option value="ge20">20 pack-year ขึ้นไป</option></select><div class="mini">pack-year = จำนวนซอง/วัน × จำนวนปีที่สูบ</div></div>
+        <div class="field"><label>เคยคัดกรองมะเร็งมาก่อน?</label><select name="screenHist"><option value="u">ไม่แน่ใจ/ไม่เคย</option><option value="recent">เคยตรวจในช่วงไม่นานนี้</option><option value="old">นานมากแล้ว</option></select></div>
+        <div class="field full"><label>ประวัติครอบครัว / ความเสี่ยง</label><div class="checks">
+          <label class="chk"><input type="checkbox" name="colonFam">พ่อแม่ พี่ หรือน้องเป็นมะเร็งลำไส้</label>
+          <label class="chk"><input type="checkbox" name="breastFam">แม่ หรือพี่น้องเป็นมะเร็งเต้านม/รังไข่</label>
+          <label class="chk"><input type="checkbox" name="prostateFam">พ่อ หรือพี่น้องเป็นมะเร็งต่อมลูกหมาก</label>
+        </div></div>
+        <div class="field full"><label>อาการเตือนที่ควรพบแพทย์</label><div class="checks">
+          <label class="chk"><input type="checkbox" name="blood">ถ่ายเป็นเลือด/ถ่ายดำ/ขับถ่ายเปลี่ยนชัดเจน</label>
+          <label class="chk"><input type="checkbox" name="weightLoss">น้ำหนักลดผิดปกติ</label>
+          <label class="chk"><input type="checkbox" name="breastSym">คลำก้อนเต้านมหรือเต้านมผิดปกติ</label>
+          <label class="chk"><input type="checkbox" name="gynBleed">เลือดออกผิดปกติทางช่องคลอด</label>
+          <label class="chk"><input type="checkbox" name="urinary">ปัสสาวะลำบาก ปัสสาวะบ่อยกลางคืน หรือปัสสาวะเป็นเลือด</label>
+          <label class="chk"><input type="checkbox" name="cough">ไอเรื้อรัง/ไอเป็นเลือด/เหนื่อยผิดปกติ</label>
+        </div></div>
+      </div>
+      <div class="actions">
+        <button class="primary" type="submit">ดูผลประเมิน</button>
+        <button class="ghost" type="button" onclick="resetForm()">ล้างข้อมูล</button>
+      </div>
+    </form>
+
+    <aside class="card">
+      <h2>ผลประเมิน</h2>
+      <p class="desc">แยกเป็น 3 ส่วน: ความเสี่ยง, Add-on ที่แนะนำ, และสรุป Package</p>
+      <div id="out" class="empty">กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”</div>
+    </aside>
+  </section>
+
+  <section id="packagePage" class="packagePage hidden card">
+    <div class="actions">
+      <button class="ghost" type="button" onclick="backToAssessment()">← กลับไปเลือก Add-on</button>
+      <a class="btn outline" href="tel:025717799">โทร 02 571 7799</a>
+    </div>
+    <div id="pkgOut"></div>
+  </section>
+</main>
+
+<script>
+const LEAD_ENDPOINT = "";
+let currentPlan = null;
+let lastSummary = "";
+
+const basePackage = {
+  name:"Package ตรวจสุขภาพ Plus",
+  old:3100,
+  price:2900,
+  free:"แถมตรวจสุขภาพฟัน",
+  fit:"ใช้เป็นฐานสำหรับตรวจสุขภาพผู้ใหญ่ และเลือก add-on เพิ่มตามความเสี่ยงมะเร็ง",
+  tests:[
+    "CBC — ตรวจความสมบูรณ์ของเม็ดเลือด",
+    "FBS — ตรวจน้ำตาลในเลือดหลังงดอาหาร",
+    "Chest X-ray — เอกซเรย์ปอดและหัวใจเบื้องต้น",
+    "Creatinine — ตรวจการทำงานของไต",
+    "AST — ตรวจเอนไซม์ตับ",
+    "ALP — ตรวจเอนไซม์ตับ/ทางเดินน้ำดี",
+    "Cholesterol — ตรวจไขมันรวม",
+    "Triglyceride — ตรวจไขมันไตรกลีเซอไรด์",
+    "HDL — ตรวจไขมันดี",
+    "Uric acid — ตรวจกรดยูริก",
+    "Urine exam — ตรวจปัสสาวะ",
+    "ECG — ตรวจคลื่นไฟฟ้าหัวใจ"
+  ]
+};
+
+const addons = {
+  fobt:{name:"FOBT / Stool occult blood", old:600, price:550, cancer:"คัดกรองมะเร็งลำไส้ใหญ่และทวารหนัก", test:"FOBT / Stool occult blood — ตรวจอุจจาระหาเลือดแฝง"},
+  psa:{name:"PSA", old:950, price:900, cancer:"คัดกรองความเสี่ยงมะเร็งต่อมลูกหมาก", test:"PSA — ตรวจสารบ่งชี้ต่อมลูกหมากในเลือด"},
+  whole:{name:"Ultrasound whole abdomen", old:2900, price:2800, cancer:"ช่วยประเมินช่องท้อง/อวัยวะในช่องท้องเพิ่มเติม", test:"Ultrasound whole abdomen — อัลตราซาวนด์ช่องท้องทั้งหมด"},
+  consult:{name:"พบแพทย์เพื่อส่งต่อการคัดกรองเฉพาะทาง", old:0, price:0, cancer:"ใช้สำหรับความเสี่ยงที่ต้องตรวจภายนอก/ส่งต่อ เช่น มะเร็งเต้านม ปากมดลูก ปอด หรืออาการเตือน", test:"พบแพทย์เพื่อส่งต่อ/วางแผนคัดกรองเฉพาะทาง เช่น mammogram, Pap smear/HPV test, LDCT, colonoscopy ตามความเหมาะสม"}
+};
+
+function togglePack(v){document.getElementById("packField").classList.toggle("hidden",v==="none")}
+function fd(){const f=document.getElementById("caForm"),o={};new FormData(f).forEach((v,k)=>o[k]=v);f.querySelectorAll("input[type=checkbox]").forEach(c=>o[c.name]=c.checked);return o}
+function n(x){let v=parseFloat(x);return isFinite(v)?v:null}
+function pill(level,label){return `<span class="pill ${level}">${label}</span>`}
+function screeningList(items, alerts){
+  let html="";
+  if(alerts.length){
+    html+=`<div class="sectionBlock riskHigh"><div class="sectionHead"><div class="sectionIcon">!</div><div><h3 class="sectionTitle">ควรพบแพทย์เพื่อประเมินก่อน</h3><p class="sectionSub">มีอาการเตือนหรือความเสี่ยงเฉพาะราย</p></div></div><ul>${alerts.map(i=>`<li>${i}</li>`).join("")}</ul></div>`;
+  }
+  html+=`<div class="sectionBlock"><div class="sectionHead"><div class="sectionIcon">1</div><div><h3 class="sectionTitle">ควรคัดกรองความเสี่ยง</h3><p class="sectionSub">แสดงเฉพาะชนิดมะเร็งที่ควรคัดกรองจากข้อมูลที่กรอก</p></div></div><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`;
+  return html;
+}
+function assess(o){
+  const age=n(o.age)||0, sex=o.sex;
+  let cancers=[], alerts=[], addonKeys=[];
+
+  const redFlag=o.blood||o.weightLoss||o.breastSym||o.gynBleed||o.urinary||o.cough;
+  if(redFlag){
+    alerts.push("มีอาการเตือน ควรพบแพทย์เพื่อประเมินก่อน");
+    addonKeys.push("consult");
+  }
+
+  if(age>=45 || o.colonFam || o.blood){
+    cancers.push("มะเร็งลำไส้ใหญ่และทวารหนัก");
+    addonKeys.push("fobt");
+  }
+
+  if(sex==="m" && ((age>=55&&age<=69)||o.prostateFam||o.urinary)){
+    cancers.push("มะเร็งต่อมลูกหมาก");
+    addonKeys.push("psa");
+  }
+
+  if(sex==="f"){
+    if(age>=40&&age<=74 || o.breastFam || o.breastSym){
+      cancers.push("มะเร็งเต้านม");
+      addonKeys.push("consult");
+    }
+    if(o.breastFam){
+      cancers.push("มะเร็งรังไข่");
+      addonKeys.push("whole");
+      addonKeys.push("consult");
+    }
+    if(age>=21&&age<=65 || o.gynBleed){
+      cancers.push("มะเร็งปากมดลูก");
+      addonKeys.push("consult");
+    }
+    if(o.gynBleed){
+      cancers.push("มะเร็งมดลูก/รังไข่");
+      addonKeys.push("whole");
+      addonKeys.push("consult");
+    }
+    if(o.weightLoss){
+      addonKeys.push("whole");
+    }
+  }
+
+  if(o.smoke==="active" || o.cough){
+    if(age>=50 || o.pack==="ge20" || o.pack==="unknown" || o.cough){
+      cancers.push("มะเร็งปอด");
+      addonKeys.push("consult");
+    }
+  }
+
+  if(o.weightLoss){
+    cancers.push("มะเร็ง/โรคในช่องท้องที่ควรประเมินเพิ่มเติม");
+    addonKeys.push("whole");
+    addonKeys.push("consult");
+  }
+
+  if(!cancers.length){
+    cancers.push("ยังไม่พบหัวข้อคัดกรองมะเร็งเฉพาะที่เด่นชัด แต่สามารถตรวจสุขภาพ Plus และปรึกษาแพทย์ตามความสนใจ");
+  }
+
+  cancers=[...new Set(cancers)];
+  addonKeys=[...new Set(addonKeys)];
+  return {cancers, alerts, addonKeys, recommendedKeys:[...addonKeys]};
+}
+function addonSelector(plan){
+  const recommended = plan.recommendedKeys||[];
+  let recHtml = "";
+  if(recommended.length){
+    recHtml = `<div class="recommendBox"><h3><span class="blueTag">Recommend</span>สิ่งที่ควรตรวจจากข้อมูลที่กรอก</h3><div class="recList">${recommended.map(k=>`<div class="recItem">${addons[k].name} — ${addons[k].cancer}</div>`).join("")}</div></div>`;
+  }
+  let html=`<div class="sectionBlock"><div class="sectionHead"><div class="sectionIcon">2</div><div><h3 class="sectionTitle">เลือก Add-on ที่ต้องการ</h3><p class="sectionSub">รายการที่ระบบแนะนำจะถูกติ๊กไว้ให้และขึ้นกรอบสีฟ้า สามารถเลือกเพิ่มหรือเอาออกได้</p></div></div>${recHtml}<div class="addonGrid">`;
+  Object.keys(addons).forEach(k=>{
+    const a=addons[k], checked=plan.addonKeys.includes(k)?"checked":"", reco=checked?"reco":"";
+    html+=`<div class="addonCard ${reco}" id="addonCard_${k}"><label><input type="checkbox" data-addon="${k}" ${checked} onchange="syncAddonCard('${k}',this.checked);updatePackageSummary()"><div><div class="addonName">${a.name}${reco?'<span class="recoTag">Recommend</span>':''}</div><div class="cancerText">${a.cancer}</div></div></label></div>`;
+  });
+  html+=`</div></div>`;
+  return html;
+}
+function selectedAddons(){
+  return [...document.querySelectorAll("input[data-addon]:checked")].map(x=>x.dataset.addon);
+}
+function syncAddonCard(k,checked){
+  const card=document.getElementById("addonCard_"+k);
+  if(card) card.classList.toggle("reco",checked);
+}
+function calcTotals(keys){
+  let old=basePackage.old, price=basePackage.price;
+  keys.forEach(k=>{old+=addons[k].old; price+=addons[k].price;});
+  return {old,price,save:old-price};
+}
+function packageSummary(){
+  const keys=selectedAddons();
+  const t=calcTotals(keys);
+  const keyNames = keys.map(k=>addons[k].name).join(" + ") || "ยังไม่เลือก Add-on";
+  return `<div class="sectionBlock"><div class="sectionHead"><div class="sectionIcon">3</div><div><h3 class="sectionTitle">Package ที่เหมาะกับคุณ</h3><p class="sectionSub">กดเพื่อดูรายละเอียดรายการตรวจและราคาสุทธิ</p></div></div><div class="pkgSummary"><span class="recoTag">เหมาะกับคุณ</span><h3>${basePackage.name}</h3><p>เพิ่ม: ${keyNames}</p><div class="old">ราคาปกติรวม ${t.old.toLocaleString()} บาท</div><div class="price">${t.price.toLocaleString()} บาท</div><p>ประหยัด ${t.save.toLocaleString()} บาท + ${basePackage.free}</p><button type="button" onclick="showPackage()">ดูรายละเอียด Package</button></div></div>`;
+}
+function updatePackageSummary(){
+  const box=document.getElementById("summaryBox");
+  if(box) box.innerHTML=packageSummary();
+}
+function evaluate(o){
+  const plan=assess(o);
+  currentPlan=plan;
+  lastSummary=[...plan.alerts,...plan.cancers,`Add-on: ${plan.addonKeys.join(",")}`].join(" | ");
+  let html=screeningList(plan.cancers, plan.alerts);
+  html+=addonSelector(plan);
+  html+=`<div id="summaryBox"></div>`;
+  setTimeout(updatePackageSummary,0);
+  return html;
+}
+function showPackage(){
+  const keys=selectedAddons();
+  const t=calcTotals(keys);
+  let rows=basePackage.tests.map(x=>({text:x,addon:false}));
+  keys.forEach(k=>rows.push({text:addons[k].test,addon:true}));
+  const addonNames = keys.map(k=>addons[k].name).join(" + ") || "ไม่มี add-on เพิ่ม";
+  document.getElementById("assessment").classList.add("hidden");
+  document.getElementById("packagePage").classList.remove("hidden");
+  document.getElementById("pkgOut").innerHTML=`<div class="detailShell"><div class="detailHero"><h2>${basePackage.name}</h2><p>Package ตรวจสุขภาพ Plus พร้อม Add-on: ${addonNames}</p></div><div class="detailBody"><div class="money"><div class="moneyBox"><b>ราคาปกติรวม</b><div>${t.old.toLocaleString()} บาท</div></div><div class="moneyBox"><b>ราคาหลัง Package/Add-on</b><div>${t.price.toLocaleString()} บาท</div></div></div><div class="totalBox"><div>ราคาสุทธิ</div><div class="price">${t.price.toLocaleString()} บาท</div><div class="save">ประหยัดจากราคาปกติรวม ${t.save.toLocaleString()} บาท</div><div>${basePackage.free}</div></div><h3>รายการตรวจ/บริการที่จะได้รับ</h3><table class="testTable"><thead><tr><th>รายการ</th></tr></thead><tbody>${rows.map(r=>`<tr class="${r.addon?'addonRow':''}"><td>${r.text}${r.addon?'<span class="addonBadge">เลือกเพิ่ม</span>':''}</td></tr>`).join("")}</tbody></table><div class="warn">*ราคานี้ไม่รวมค่าแพทย์และค่ายา / รายการส่งต่อภายนอกไม่มีการ quote ราคาในระบบนี้ และขึ้นกับดุลยพินิจแพทย์</div>${leadBox(keys,t)}<div class="actions"><a class="btn primary" href="chollada_booking_google_sheet_connected.html">ขอนัดหมาย</a><a class="btn outline" href="tel:025717799">โทรสอบถาม</a></div></div></div>`;
+}
+function backToAssessment(){document.getElementById("packagePage").classList.add("hidden");document.getElementById("assessment").classList.remove("hidden")}
+function leadBox(keys,t){
+  const addonNames=keys.map(k=>addons[k].name).join(", ")||"ยังไม่เลือก add-on";
+  return `<div class="leadbox"><b>สนใจให้ทีมโรงพยาบาลติดต่อกลับหรือไม่?</b><p class="mini">ระบบจะส่งเฉพาะ Package/Add-on ที่เลือก ผลสรุป ชื่อ และเบอร์โทรเท่านั้น</p><label class="chk"><input id="leadConsent" type="checkbox" onchange="document.getElementById('leadForm').classList.toggle('hidden',!this.checked)">ยินยอมให้โรงพยาบาลชลลดาติดต่อกลับ</label><div id="leadForm" class="leadform hidden"><div class="serviceChecks"><label class="chk"><input type="checkbox" name="interest" value="Cancer screening package" checked>สนใจ ${basePackage.name}</label><label class="chk"><input type="checkbox" name="interest" value="${addonNames}" checked>สนใจ Add-on: ${addonNames}</label><label class="chk"><input type="checkbox" name="interest" value="ปรึกษาแพทย์เพื่อส่งต่อคัดกรองเฉพาะทาง">ปรึกษาแพทย์เพื่อส่งต่อคัดกรองเฉพาะทาง</label></div><input id="leadName" placeholder="ชื่อที่สะดวกให้ติดต่อ"><input id="leadPhone" placeholder="เบอร์โทรศัพท์"><button class="primary" type="button" onclick="sendLead(${t.price})">ส่งข้อมูลให้ติดต่อกลับ</button><div id="leadStatus" class="status"></div></div></div>`;
+}
+async function sendLead(totalPrice){
+  const name=document.getElementById("leadName").value.trim(), phone=document.getElementById("leadPhone").value.trim();
+  const interests=[...document.querySelectorAll("input[name=interest]:checked")].map(x=>x.value).join(", ");
+  const chosen=selectedAddons().map(k=>addons[k].name).join(", ");
+  const st=document.getElementById("leadStatus");
+  if(!name||!phone){st.textContent="กรุณากรอกชื่อและเบอร์โทร";return}
+  if(!interests){st.textContent="กรุณาเลือกหัวข้อที่สนใจอย่างน้อย 1 ข้อ";return}
+  const payload={submittedAt:new Date().toLocaleString("th-TH"),topic:"ผู้ใหญ่: Cancer Screening",package:basePackage.name,addons:chosen,totalPrice,totalPriceText:totalPrice.toLocaleString()+" บาท",interest:interests,resultSummary:lastSummary,name,phone,status:"รอติดต่อกลับ",source:"Chollada Adult Cancer Screening Check"};
+  try{
+    if(LEAD_ENDPOINT){await fetch(LEAD_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)})}
+    st.textContent="ส่งข้อมูลเรียบร้อย ทีมงานจะติดต่อกลับ";
+  }catch(e){st.textContent="ส่งข้อมูลไม่สำเร็จ กรุณาโทร 02 571 7799"}
+}
+function resetForm(){document.getElementById("caForm").reset();document.getElementById("packField").classList.add("hidden");document.getElementById("out").className="empty";document.getElementById("out").innerHTML="กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”"}
+document.getElementById("caForm").addEventListener("submit",e=>{e.preventDefault();const out=document.getElementById("out");out.className="";out.innerHTML=evaluate(fd());out.scrollIntoView({behavior:"smooth",block:"nearest"})});
+</script>
+</body>
+</html>

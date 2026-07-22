@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chollada Child Growth & Vaccine Check v1.3</title>
+<style>
+:root{
+  --g:#7fcfb6;--gd:#2f8f79;--b:#1f5f99;--bg:#f6fbfa;--t:#1f2937;--m:#667085;--l:#e5ecea;
+  --red:#b42318;--redbg:#fff1f3;--org:#b54708;--ok:#027a48
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",sans-serif;
+  background:radial-gradient(circle at top left,rgba(127,207,182,.26),transparent 35%),var(--bg);
+  color:var(--t)
+}
+header{text-align:center;padding:28px 16px 14px}
+.brand{
+  display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--l);
+  border-radius:999px;padding:8px 14px;color:var(--gd);font-weight:900
+}
+.dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b))}
+h1{margin:14px 0 8px;font-size:clamp(28px,7vw,48px);letter-spacing:-.05em;color:#12312b;line-height:1.1}
+.sub{max-width:840px;margin:auto;color:var(--m);line-height:1.75}
+.wrap{width:min(1060px,calc(100% - 28px));margin:0 auto 44px}
+.notice{
+  background:#fff7e6;border:1px solid #fedf89;color:#7a4f01;border-radius:18px;
+  padding:14px;line-height:1.65;margin:12px 0 18px
+}
+.grid{
+  display:grid;
+  grid-template-columns:minmax(320px,.92fr) minmax(360px,1.08fr);
+  gap:16px;
+  align-items:start
+}
+.card{
+  background:#fff;border:1px solid var(--l);border-radius:22px;
+  box-shadow:0 10px 25px rgba(16,24,40,.07);padding:18px
+}
+.card h2{margin:0 0 6px;color:#12312b}
+.desc{color:var(--m);line-height:1.7;margin:0 0 14px;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}.full{grid-column:1/-1}
+label{font-weight:850;color:#344054;font-size:14px}
+input,select{
+  border:1px solid var(--l);border-radius:14px;padding:12px;font-size:16px;font-family:inherit;background:#fff
+}
+.checks{display:grid;gap:8px}
+.chk{
+  display:grid;grid-template-columns:22px 1fr;gap:9px;background:#fbfefd;border:1px solid var(--l);
+  border-radius:14px;padding:10px;line-height:1.5;font-size:14px
+}
+.chk input{width:18px;height:18px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button,a.btn{
+  border:0;border-radius:14px;padding:12px 15px;font-weight:900;font-size:15px;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer
+}
+.primary{background:linear-gradient(135deg,var(--gd),var(--b));color:#fff;flex:1}
+.ghost{background:#f8fafc;color:#475467;border:1px solid var(--l)}
+.outline{background:#fff;color:var(--gd);border:1px solid rgba(47,143,121,.35)}
+.empty{border:1px dashed var(--l);background:#fbfefd;border-radius:18px;padding:18px;color:var(--m);line-height:1.7}
+.res{border:1px solid var(--l);border-radius:18px;padding:14px;margin-bottom:12px;background:#fff}
+.res h3{margin:0 0 8px;color:#12312b}
+.riskHigh{background:var(--redbg);border:1px solid #fecdca;border-left:6px solid var(--red)}
+.riskHigh h3{color:var(--red)}
+.alertBox{
+  background:var(--redbg);border:1px solid #fecdca;border-left:6px solid var(--red);
+  border-radius:18px;padding:14px;margin-bottom:12px;color:#7a271a
+}
+.alertBox b{color:var(--red)}
+.pill{display:inline-flex;padding:5px 10px;border-radius:999px;font-weight:900;font-size:12px;margin-bottom:8px}
+.low{background:#ecfdf3;color:var(--ok);border:1px solid #abefc6}
+.mid{background:#fff7e6;color:var(--org);border:1px solid #fedf89}
+.high{background:#fff1f3;color:var(--red);border:1px solid #fecdca}
+ul{line-height:1.65;color:#344054;margin:8px 0 0}
+.mini{font-size:12px;color:var(--m);line-height:1.6;margin-top:8px}
+.bmiBox{background:#f8fafc;border:1px solid var(--l);border-radius:18px;padding:16px;margin:10px 0 12px}
+.bmiNum{font-size:38px;font-weight:950;color:#12312b;letter-spacing:-.05em}
+.bmiBand{
+  height:18px;border-radius:999px;overflow:hidden;display:grid;grid-template-columns:12fr 38fr 35fr 10fr 5fr;
+  border:1px solid var(--l);position:relative;margin-top:12px
+}
+.b1{background:#e0f2fe}.b2{background:#ecfdf3}.b3{background:#e8fbf1}.b4{background:#fff7e6}.b5{background:#fff1f3}
+.mark{position:absolute;top:-5px;width:4px;height:28px;border-radius:4px;background:#12312b}
+.ticks{display:grid;grid-template-columns:12fr 38fr 35fr 10fr 5fr;font-size:11px;color:var(--m);text-align:center;margin-top:4px}
+.vaxTable{
+  width:100%;border-collapse:separate;border-spacing:0;margin-top:8px;font-size:14px;
+  overflow:hidden;border:1px solid var(--l);border-radius:14px
+}
+.vaxTable th,.vaxTable td{padding:10px;border-bottom:1px solid var(--l);vertical-align:top;text-align:left}
+.vaxTable th{background:#f8fafc;color:#344054}
+.vaxTable tr:last-child td{border-bottom:0}
+.due{background:#fff7e6}
+.tag{display:inline-flex;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:900;margin:2px 4px 2px 0}
+.tagFund{background:#ecfdf3;color:#027a48;border:1px solid #abefc6}
+.tagOpt{background:#eef8ff;color:#175cd3;border:1px solid #b2ddff}
+.cta{background:#f1faf7;border:1px solid rgba(127,207,182,.45);border-radius:18px;padding:14px}
+.ctab{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.leadbox{background:#f8fafc;border:1px solid var(--l);border-radius:18px;padding:14px;margin-top:12px}
+.leadform{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.serviceChecks{grid-column:1/-1;display:grid;gap:8px}
+.hidden{display:none!important}
+.status{font-size:13px;margin-top:8px;color:var(--m)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .fgrid,.leadform{grid-template-columns:1fr}
+  .actions button,.actions a,.ctab a{width:100%}
+  .vaxTable{font-size:13px}.bmiNum{font-size:32px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span>CHOLLADA hospital</div>
+  <h1>Child Growth & Vaccine Check</h1>
+  <p class="sub">เช็ก BMI และวัคซีนตามวัยเบื้องต้น แสดงวัคซีนพื้นฐานเมื่อไม่แน่ใจ/ไม่ครบ และแสดงวัคซีนทางเลือกตามอายุ</p>
+</header>
+
+<main class="wrap">
+  <div class="notice">
+    <b>หมายเหตุ:</b> ผลประเมินนี้เป็นข้อมูลเบื้องต้น ไม่ใช่การวินิจฉัยโรค ตารางวัคซีนอาจปรับตามประวัติจริง โรคประจำตัว วัคซีนที่เคยได้รับ และดุลยพินิจแพทย์ กรุณานำสมุดวัคซีนมาทุกครั้ง
+  </div>
+
+  <section class="grid">
+    <form id="childForm" class="card">
+      <h2>ข้อมูลเด็ก</h2>
+      <p class="desc">ระบบจะคำนวณ BMI และแนะนำวัคซีนตั้งแต่ช่วงก่อนหน้าจนถึงอายุที่กรอก</p>
+
+      <div class="fgrid">
+        <div class="field">
+          <label>อายุเด็ก</label>
+          <input name="age" type="number" step=".1" min="0" max="18" placeholder="เช่น 4.5">
+        </div>
+        <div class="field">
+          <label>หน่วย</label>
+          <select name="unit">
+            <option value="y">ปี</option>
+            <option value="m">เดือน</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>เพศ</label>
+          <select name="sex">
+            <option value="">ไม่ระบุ</option>
+            <option value="f">หญิง</option>
+            <option value="m">ชาย</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>น้ำหนัก (กิโลกรัม)</label>
+          <input name="w" type="number" step=".1" placeholder="เช่น 18">
+        </div>
+        <div class="field">
+          <label>ส่วนสูง (เซนติเมตร)</label>
+          <input name="h" type="number" step=".1" placeholder="เช่น 105">
+        </div>
+        <div class="field">
+          <label>วัคซีนพื้นฐาน</label>
+          <select name="vstatus">
+            <option value="complete">ฉีดครบตามอายุ</option>
+            <option value="unknown">ไม่แน่ใจเลย/ไม่ครบ</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>ประเด็นที่เกี่ยวข้อง</label>
+          <div class="checks">
+            <label class="chk"><input type="checkbox" name="chronic">มีโรคประจำตัว เช่น หอบหืด โรคหัวใจ โรคปอด ภูมิคุ้มกันต่ำ</label>
+            <label class="chk"><input type="checkbox" name="flu">ปีนี้ฉีดวัคซีนไข้หวัดใหญ่แล้ว</label>
+            <label class="chk"><input type="checkbox" name="grow">กินได้น้อย น้ำหนักขึ้นช้า หรือผู้ปกครองกังวลเรื่องการเจริญเติบโต</label>
+            <label class="chk"><input type="checkbox" name="sick">ป่วยบ่อย ไอเรื้อรัง หอบ หรือมีภูมิแพ้</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" type="submit">ดูผลประเมิน</button>
+        <button class="ghost" type="button" onclick="resetForm()">ล้างข้อมูล</button>
+      </div>
+    </form>
+
+    <aside class="card">
+      <h2>ผลประเมิน</h2>
+      <p class="desc">ระบบจะแสดง BMI, ช่วง percentile โดยประมาณ และวัคซีนที่ควรตรวจสอบถึงอายุปัจจุบัน</p>
+      <div id="out" class="empty">กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”</div>
+    </aside>
+  </section>
+</main>
+
+<script>
+const LEAD_ENDPOINT = "";
+let lastTopic = "เด็ก: Growth & Vaccine";
+let lastSummary = "";
+
+const fundamental = [
+  {age:0,label:"แรกเกิด",vaccine:"Hepatitis B เข็มที่ 1",note:"0 เดือน"},
+  {age:1,label:"1 เดือน",vaccine:"Hepatitis B เข็มที่ 2",note:"1 เดือน"},
+  {age:2,label:"2 เดือน",vaccine:"คอตีบ-ไอกรน-บาดทะยัก เข็มที่ 1, โปลิโอชนิดฉีด เข็มที่ 1",note:"2 เดือน"},
+  {age:4,label:"4 เดือน",vaccine:"คอตีบ-ไอกรน-บาดทะยัก เข็มที่ 2, โปลิโอชนิดฉีด เข็มที่ 2",note:"4 เดือน"},
+  {age:6,label:"6 เดือน",vaccine:"Hepatitis B เข็มที่ 3, คอตีบ-ไอกรน-บาดทะยัก เข็มที่ 3, โปลิโอชนิดฉีด เข็มที่ 3",note:"6 เดือน"},
+  {age:9,label:"9 เดือน",vaccine:"MMR หัด-คางทูม-หัดเยอรมัน เข็มที่ 1",note:"9 เดือน"},
+  {age:18,label:"1 ปี 6 เดือน",vaccine:"คอตีบ-ไอกรน-บาดทะยัก booster, MMR เข็มที่ 2",note:"18 เดือน"},
+  {age:48,label:"4–6 ปี",vaccine:"คอตีบ-ไอกรน-บาดทะยัก booster",note:"4–6 ปี"},
+  {age:120,label:"หลัง 10 ปี",vaccine:"กระตุ้นคอตีบ-ไอกรน-บาดทะยักทุก 10 ปี",note:"ทุก 10 ปี"}
+];
+
+const optional = [
+  {age:2,label:"2 เดือน",vaccine:"Rotavirus เข็มที่ 1, IPD / Pneumococcal เข็มที่ 1",note:"2 เดือน"},
+  {age:4,label:"4 เดือน",vaccine:"Rotavirus เข็มที่ 2, IPD / Pneumococcal เข็มที่ 2",note:"4 เดือน"},
+  {age:6,label:"6 เดือน",vaccine:"Rotavirus เข็มที่ 3, IPD / Pneumococcal เข็มที่ 3",note:"6 เดือน"},
+  {age:8,label:"8 เดือน",vaccine:"RSV prevention",note:"8 เดือน / ปรึกษากุมารแพทย์ตามความเหมาะสม"},
+  {age:9,label:"9 เดือน",vaccine:"JE vaccine ชนิดเชื้อมีชีวิต เข็มที่ 1",note:"9 เดือน"},
+  {age:12,label:"1 ปี",vaccine:"ไข้หวัดใหญ่ประจำปี, สุกใส เข็มที่ 1, IPD / Pneumococcal booster",note:"เริ่มไข้หวัดใหญ่ทุกปีตั้งแต่อายุ 1 ปี"},
+  {age:24,label:"2 ปี",vaccine:"JE vaccine ชนิดเชื้อมีชีวิต เข็มที่ 2",note:"2 ปี"},
+  {age:48,label:"4 ปี",vaccine:"สุกใส เข็มที่ 2, Dengue vaccine หากเหมาะสม",note:"Dengue vaccine valid ตั้งแต่อายุ 4 ปีขึ้นไป"}
+];
+
+function fd(){
+  const f=document.getElementById('childForm');
+  const o={};
+  new FormData(f).forEach((v,k)=>o[k]=v);
+  f.querySelectorAll('input[type=checkbox]').forEach(c=>o[c.name]=c.checked);
+  return o;
+}
+function n(x){let v=parseFloat(x);return isFinite(v)?v:null}
+function ageMonths(o){let a=n(o.age);if(a===null)return null;return o.unit==='m'?a:a*12}
+function bmi(w,h){if(!w||!h)return null;h=h/100;return w/(h*h)}
+function P(l){
+  const t={low:['low','ควรติดตามตามวัย'],mid:['mid','ควรตรวจสอบเพิ่มเติม'],high:['high','ควรพบแพทย์/ทบทวนเพิ่มเติม']};
+  return `<span class="pill ${t[l][0]}">${t[l][1]}</span>`;
+}
+function C(t,l,a){
+  return `<div class="res ${l==='high'?'riskHigh':''}"><h3>${t}</h3>${P(l)}<ul>${a.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
+}
+function alertBox(items){
+  if(!items.length)return'';
+  return `<div class="alertBox"><b>จุดที่ควรให้ความสำคัญ</b><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
+}
+function bmiBandInfo(B){
+  if(!B)return{level:'mid',marker:50,text:'ยังประเมินไม่ได้',pct:'ยังประเมินไม่ได้'};
+  if(B<14)return{level:'high',marker:6,text:'ค่อนข้างต่ำ',pct:'น่าจะอยู่ช่วงต่ำกว่า P3–P10'};
+  if(B<18)return{level:'low',marker:45,text:'ใกล้เคียงเกณฑ์',pct:'น่าจะอยู่ช่วง P10–P85'};
+  if(B<22)return{level:'mid',marker:82,text:'เริ่มสูง',pct:'น่าจะอยู่ช่วง P85–P95'};
+  return{level:'high',marker:97,text:'สูง',pct:'น่าจะอยู่ช่วงมากกว่า P95'};
+}
+function bmiBox(B,info){
+  if(!B)return`<div class="bmiBox"><b>BMI</b><div class="mini">ยังไม่มีข้อมูลน้ำหนัก/ส่วนสูงครบ จึงคำนวณ BMI ไม่ได้</div></div>`;
+  return `<div class="bmiBox">
+    <b>BMI โดยประมาณ</b>
+    <div class="bmiNum">${B.toFixed(1)} <span style="font-size:16px;color:var(--m)">กก./ม²</span></div>
+    <span class="pill ${info.level}">${info.text}</span>
+    <div class="bmiBand"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div><div class="b5"></div><div class="mark" style="left:${info.marker}%"></div></div>
+    <div class="ticks"><span>&lt;P3</span><span>P3–P50</span><span>P50–P85</span><span>P85–P95</span><span>&gt;P95</span></div>
+    <div class="mini">ตอนนี้ BMI อยู่ในช่วง: <b>${info.pct}</b> โดยประมาณ</div>
+  </div>`;
+}
+function dueUpToAge(ageM,target){
+  if(ageM===null)return false;
+  // แสดงเข็มที่แนะนำตั้งแต่แรกเกิดจนถึงอายุที่กรอก เพื่อช่วยทบทวน catch-up
+  return target <= ageM + 0.5;
+}
+function vaccineTable(title,rows,type,emptyText){
+  if(!rows.length){
+    return `<div class="res"><h3>${title}</h3><div class="mini">${emptyText}</div></div>`;
+  }
+  return `<div class="res">
+    <h3>${title}</h3>
+    <div class="mini">แสดงรายการที่ควรได้รับตั้งแต่ช่วงอายุก่อนหน้าจนถึงอายุที่กรอก เพื่อใช้ตรวจสอบกับสมุดวัคซีน</div>
+    <table class="vaxTable">
+      <thead><tr><th>อายุที่แนะนำ</th><th>วัคซีน</th><th>หมายเหตุ</th></tr></thead>
+      <tbody>${rows.map(x=>`<tr class="due"><td>${x.label}</td><td><span class="tag ${type==='fund'?'tagFund':'tagOpt'}">${type==='fund'?'พื้นฐาน':'ทางเลือก'}</span> ${x.vaccine}</td><td>${x.note}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>`;
+}
+function getVaccineAdvice(ageM,o){
+  let fund = [];
+  if(o.vstatus==='unknown'){
+    fund = fundamental.filter(v=>dueUpToAge(ageM,v.age));
+  }
+
+  let opt = optional.filter(v=>dueUpToAge(ageM,v.age));
+
+  if(ageM!==null && ageM>=12 && !o.flu && !opt.some(v=>v.vaccine.includes('ไข้หวัดใหญ่'))){
+    opt.unshift({age:ageM,label:'ตั้งแต่อายุ 1 ปีขึ้นไป',vaccine:'ไข้หวัดใหญ่ประจำปี',note:'แนะนำทบทวนทุกปี'});
+  }
+
+  if(ageM!==null && ageM>=48 && !opt.some(v=>v.vaccine.includes('Dengue'))){
+    opt.push({age:ageM,label:'ตั้งแต่อายุ 4 ปีขึ้นไป',vaccine:'Dengue vaccine หากเหมาะสม',note:'ควรปรึกษากุมารแพทย์เรื่องข้อบ่งชี้และประวัติเดิม'});
+  }
+
+  if(o.chronic){
+    opt.unshift({age:ageM||0,label:'เด็กที่มีโรคประจำตัว',vaccine:'วัคซีนเฉพาะตามโรคประจำตัว เช่น Influenza / Pneumococcal',note:'ให้แพทย์พิจารณารายบุคคล'});
+  }
+
+  return {fund,opt};
+}
+function cta(items){
+  return `<div class="cta">
+    <b>คลินิกหรือบริการที่อาจเหมาะกับเด็ก</b>
+    <ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <div class="ctab">
+      <a class="btn primary" href="chollada_booking_google_sheet_connected.html">ขอนัดหมายกุมารแพทย์</a>
+      <a class="btn outline" href="tel:025717799">โทร 02 571 7799</a>
+    </div>
+  </div>`;
+}
+function leadBox(){
+  return `<div class="leadbox">
+    <b>สนใจให้ทีมโรงพยาบาลติดต่อกลับหรือไม่?</b>
+    <p class="mini">กรุณาเลือกบริการที่สนใจ ระบบจะส่งเฉพาะหัวข้อที่ประเมิน บริการที่สนใจ ผลสรุป ชื่อ และเบอร์โทรเท่านั้น</p>
+    <label class="chk"><input id="leadConsent" type="checkbox" onchange="document.getElementById('leadForm').classList.toggle('hidden',!this.checked)">ยินยอมให้โรงพยาบาลชลลดาติดต่อกลับ</label>
+    <div id="leadForm" class="leadform hidden">
+      <div class="serviceChecks">
+        <label class="chk"><input type="checkbox" name="interest" value="ตรวจการเติบโต/น้ำหนักส่วนสูง">ตรวจการเติบโต/น้ำหนักส่วนสูง</label>
+        <label class="chk"><input type="checkbox" name="interest" value="ทบทวนสมุดวัคซีนพื้นฐาน">ทบทวนสมุดวัคซีนพื้นฐาน</label>
+        <label class="chk"><input type="checkbox" name="interest" value="วัคซีนทางเลือก/วัคซีนเสริม">วัคซีนทางเลือก/วัคซีนเสริม</label>
+        <label class="chk"><input type="checkbox" name="interest" value="ปรึกษาเด็กป่วยบ่อย/ภูมิแพ้/หอบ">ปรึกษาเด็กป่วยบ่อย/ภูมิแพ้/หอบ</label>
+      </div>
+      <input id="leadName" placeholder="ชื่อที่สะดวกให้ติดต่อ">
+      <input id="leadPhone" placeholder="เบอร์โทรศัพท์">
+      <button class="primary" type="button" onclick="sendLead()">ส่งข้อมูลให้ติดต่อกลับ</button>
+      <div id="leadStatus" class="status"></div>
+    </div>
+  </div>`;
+}
+async function sendLead(){
+  const name=document.getElementById('leadName').value.trim();
+  const phone=document.getElementById('leadPhone').value.trim();
+  const interests=[...document.querySelectorAll('input[name=interest]:checked')].map(x=>x.value).join(', ');
+  const st=document.getElementById('leadStatus');
+  if(!name||!phone){st.textContent='กรุณากรอกชื่อและเบอร์โทร';return}
+  if(!interests){st.textContent='กรุณาเลือกบริการที่สนใจอย่างน้อย 1 ข้อ';return}
+  const payload={submittedAt:new Date().toLocaleString('th-TH'),topic:lastTopic,interest:interests,resultSummary:lastSummary,name,phone,status:'รอติดต่อกลับ',source:'Chollada Child Growth & Vaccine Check'};
+  try{
+    if(LEAD_ENDPOINT){
+      await fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+    }
+    st.textContent='ส่งข้อมูลเรียบร้อย ทีมงานจะติดต่อกลับ';
+  }catch(e){st.textContent='ส่งข้อมูลไม่สำเร็จ กรุณาโทร 02 571 7799'}
+}
+function resetForm(){
+  document.getElementById('childForm').reset();
+  document.getElementById('out').className='empty';
+  document.getElementById('out').innerHTML='กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”';
+}
+function evaluateChild(o){
+  const B=bmi(n(o.w),n(o.h));
+  const ageM=ageMonths(o);
+  const info=bmiBandInfo(B);
+  let alerts=[], growth=[];
+
+  if(B){
+    growth.push(`BMI โดยประมาณ ${B.toFixed(1)} กก./ม²`);
+    growth.push(`ช่วง percentile โดยประมาณ: ${info.pct}`);
+    if(info.level==='high' && B<14) alerts.push('BMI ค่อนข้างต่ำ ควรปรึกษากุมารแพทย์');
+    if(info.level==='high' && B>=22) alerts.push('BMI สูง ควรประเมินโรคร่วมและพฤติกรรม');
+  } else {
+    growth.push('ยังไม่มีข้อมูลน้ำหนัก/ส่วนสูงครบ');
+  }
+
+  if(o.grow) alerts.push('ผู้ปกครองกังวลเรื่องการเติบโต ควรติดตามแนวโน้มการเติบโตต่อเนื่อง');
+  if(o.vstatus==='unknown') alerts.push('วัคซีนพื้นฐานไม่แน่ใจ/ไม่ครบ ควรทบทวนสมุดวัคซีนและตรวจเข็มที่ถึงเวลาตามอายุ');
+  if(o.chronic) alerts.push('มีโรคประจำตัว ควรให้แพทย์ทบทวนวัคซีนและการป้องกันติดเชื้อรายบุคคล');
+  if(o.sick) alerts.push('ป่วยบ่อย ไอเรื้อรัง หรือหอบ ควรปรึกษากุมารแพทย์');
+
+  const vax=getVaccineAdvice(ageM,o);
+
+  lastSummary=[...alerts,...growth,...vax.fund.map(x=>x.vaccine),...vax.opt.map(x=>x.vaccine)].join(' | ');
+
+  const fundEmpty = o.vstatus==='complete'
+    ? 'เลือกว่าฉีดครบตามอายุแล้ว จึงไม่แสดงวัคซีนพื้นฐานเพิ่มเติม หากไม่แน่ใจควรนำสมุดวัคซีนมาทบทวน'
+    : 'ยังไม่มีวัคซีนพื้นฐานในช่วงอายุที่กรอก หรือกรุณาตรวจสอบกับสมุดวัคซีนอีกครั้ง';
+
+  return alertBox(alerts)
+    + bmiBox(B,info)
+    + C('สรุปการเติบโต',info.level,growth)
+    + vaccineTable('วัคซีนพื้นฐานที่ควรได้รับถึงอายุปัจจุบัน',vax.fund,'fund',fundEmpty)
+    + vaccineTable('วัคซีนทางเลือก / Optional ที่ควรพิจารณาถึงอายุปัจจุบัน',vax.opt,'opt','ยังไม่มีวัคซีนทางเลือกที่เข้าเกณฑ์ตามอายุที่กรอก')
+    + cta([
+      'คลินิกกุมารเวชกรรม: ตรวจการเจริญเติบโตและพัฒนาการ',
+      'ทบทวนสมุดวัคซีนพื้นฐาน',
+      'วางแผนวัคซีนทางเลือกตามวัยและโรคประจำตัว',
+      'ปรึกษากุมารแพทย์หากโตช้า น้ำหนักมาก ป่วยบ่อย หรือมีโรคระบบหายใจ'
+    ])
+    + leadBox();
+}
+document.getElementById('childForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const out=document.getElementById('out');
+  out.className='';
+  out.innerHTML=evaluateChild(fd());
+  out.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
+</body>
+</html>

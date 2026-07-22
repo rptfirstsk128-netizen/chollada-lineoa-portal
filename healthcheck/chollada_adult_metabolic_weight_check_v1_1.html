@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chollada Adult Metabolic & Weight Check v1.0</title>
+<style>
+:root{--g:#7fcfb6;--gd:#2f8f79;--b:#1f5f99;--bg:#f6fbfa;--t:#1f2937;--m:#667085;--l:#e5ecea;--red:#b42318;--redbg:#fff1f3;--org:#b54708;--ok:#027a48;--dark:#12312b}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",sans-serif;background:radial-gradient(circle at top left,rgba(127,207,182,.26),transparent 35%),var(--bg);color:var(--t)}
+header{text-align:center;padding:28px 16px 14px}.brand{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--l);border-radius:999px;padding:8px 14px;color:var(--gd);font-weight:900}.dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--g),var(--b))}
+h1{margin:14px 0 8px;font-size:clamp(28px,7vw,48px);letter-spacing:-.05em;color:#12312b;line-height:1.1}.sub{max-width:860px;margin:auto;color:var(--m);line-height:1.75}
+.wrap{width:min(1120px,calc(100% - 28px));margin:0 auto 44px}.notice{background:#fff7e6;border:1px solid #fedf89;color:#7a4f01;border-radius:18px;padding:14px;line-height:1.65;margin:12px 0 18px}
+.grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:start}.card{background:#fff;border:1px solid var(--l);border-radius:22px;box-shadow:0 10px 25px rgba(16,24,40,.07);padding:18px}.card h2{margin:0 0 6px;color:#12312b}.desc{color:var(--m);line-height:1.7;margin:0 0 14px;font-size:14px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.full{grid-column:1/-1}label{font-weight:850;color:#344054;font-size:14px}input,select{border:1px solid var(--l);border-radius:14px;padding:12px;font-size:16px;font-family:inherit;background:#fff}.checks{display:grid;gap:8px}.chk{display:grid;grid-template-columns:22px 1fr;gap:9px;background:#fbfefd;border:1px solid var(--l);border-radius:14px;padding:10px;line-height:1.5;font-size:14px}.chk input{width:18px;height:18px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}button,a.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:900;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.primary{background:linear-gradient(135deg,var(--gd),var(--b));color:#fff;flex:1}.ghost{background:#f8fafc;color:#475467;border:1px solid var(--l)}.outline{background:#fff;color:var(--gd);border:1px solid rgba(47,143,121,.35)}
+.empty{border:1px dashed var(--l);background:#fbfefd;border-radius:18px;padding:18px;color:var(--m);line-height:1.7}.res{border:1px solid var(--l);border-radius:18px;padding:14px;margin-bottom:12px;background:#fff}.res h3{margin:0 0 8px;color:#12312b}.riskHigh{background:var(--redbg);border:1px solid #fecdca;border-left:6px solid var(--red)}.riskHigh h3{color:var(--red)}
+.pill{display:inline-flex;padding:5px 10px;border-radius:999px;font-weight:900;font-size:12px;margin-bottom:8px}.low{background:#ecfdf3;color:var(--ok);border:1px solid #abefc6}.mid{background:#fff7e6;color:var(--org);border:1px solid #fedf89}.high{background:#fff1f3;color:var(--red);border:1px solid #fecdca}
+.summaryGrid{display:grid;grid-template-columns:1fr;gap:10px}.summaryCard{border:1px solid var(--l);border-radius:18px;padding:14px;background:#fff}.summaryCard.highBorder{background:var(--redbg);border-color:#fecdca;border-left:6px solid var(--red)}.summaryCard h3{margin:0 0 6px;color:#12312b}.bigNum{font-size:34px;font-weight:950;color:#12312b;letter-spacing:-.04em}.mini{font-size:12px;color:var(--m);line-height:1.6;margin-top:8px}ul{line-height:1.65;color:#344054;margin:8px 0 0}
+.cvbar{height:16px;border-radius:999px;background:linear-gradient(90deg,#ecfdf3 0 10%,#fff7e6 10% 20%,#fff1f3 20% 100%);border:1px solid var(--l);position:relative;margin:10px 0}.mark{position:absolute;top:-6px;width:5px;height:28px;background:#12312b;border-radius:4px}.ticks{display:grid;grid-template-columns:1fr 1fr 4fr;font-size:11px;color:var(--m);margin-top:2px}
+.pkgArea{margin-top:14px}.pkgTitle{font-size:18px;font-weight:950;color:#12312b;margin:0 0 8px}.pkgGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pkgCard{background:linear-gradient(135deg,#12312b,#1f5f99);color:#fff;border-radius:20px;padding:16px;box-shadow:0 10px 24px rgba(16,24,40,.14);border:2px solid transparent}.pkgCard.recommended{border-color:#7fcfb6}.pkgCard h3{margin:0 0 8px;color:#fff}.pkgCard p{margin:0;color:#d0d5dd;line-height:1.55;font-size:13px}.pkgCard .price{font-size:26px;font-weight:950;margin-top:8px}.pkgCard .old{text-decoration:line-through;color:#cfd7e6;font-size:13px}.pkgCard button{margin-top:10px;width:100%;background:#fff;color:#12312b}.tag{display:inline-flex;background:#ecfdf3;color:#027a48;border:1px solid #abefc6;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;margin-bottom:8px}
+.hidden{display:none!important}.packagePage{margin-top:16px}.testTable{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--l);border-radius:16px;overflow:hidden;margin-top:10px}.testTable th,.testTable td{padding:10px;border-bottom:1px solid var(--l);text-align:left;vertical-align:top}.testTable th{background:#f8fafc}.testTable tr:last-child td{border-bottom:0}.totalBox{background:#12312b;color:#fff;border-radius:18px;padding:14px;margin-top:12px}.totalBox .price{font-size:32px;font-weight:950}.warn{font-size:12px;color:#7a4f01;background:#fff7e6;border:1px solid #fedf89;border-radius:14px;padding:10px;margin-top:10px}
+.leadbox{background:#f8fafc;border:1px solid var(--l);border-radius:18px;padding:14px;margin-top:12px}.leadform{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.serviceChecks{grid-column:1/-1;display:grid;gap:8px}.status{font-size:13px;margin-top:8px;color:var(--m)}
+@media(max-width:940px){.grid,.pkgGrid{grid-template-columns:1fr}}@media(max-width:620px){.fgrid,.leadform{grid-template-columns:1fr}.actions button,.actions a{width:100%}.bigNum{font-size:30px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span>CHOLLADA hospital</div>
+  <h1>Adult Weight & Metabolic Check</h1>
+  <p class="sub">ประเมินอ้วนลงพุง ความเสี่ยงโรคหลอดเลือดหัวใจ/สมอง 10 ปี และความเสี่ยงหยุดหายใจขณะนอนหลับ พร้อมแนะนำ Package ที่เหมาะสม</p>
+</header>
+
+<main class="wrap">
+  <div class="notice"><b>หมายเหตุ:</b> ผลประเมินนี้เป็นข้อมูลเบื้องต้น ไม่ใช่การวินิจฉัยโรค Thai CV Risk ใช้เหมาะที่สุดในคนไทยอายุ 35–70 ปีที่ยังไม่มีโรคหัวใจและหลอดเลือดเดิม</div>
+
+  <section id="assessment" class="grid">
+    <form id="metForm" class="card">
+      <h2>ข้อมูลสำหรับประเมิน</h2>
+      <p class="desc">กรอกข้อมูลที่ทราบ ระบบจะใช้รอบเอวเป็นนิ้วและแปลงเป็นเซนติเมตรเพื่อคำนวณ</p>
+      <div class="fgrid">
+        <div class="field"><label>อายุ</label><input name="age" type="number" min="18" max="100" placeholder="เช่น 45"></div>
+        <div class="field"><label>เพศ</label><select name="sex"><option value="">ไม่ระบุ</option><option value="m">ชาย</option><option value="f">หญิง</option></select></div>
+        <div class="field"><label>น้ำหนัก (กิโลกรัม)</label><input name="w" type="number" step=".1" placeholder="เช่น 78"></div>
+        <div class="field"><label>ส่วนสูง (เซนติเมตร)</label><input name="h" type="number" step=".1" placeholder="เช่น 170"></div>
+        <div class="field"><label>รอบเอว (นิ้ว)</label><input name="waistIn" type="number" step=".1" placeholder="เช่น 36"></div>
+        <div class="field"><label>ความดันตัวบน</label><input name="sbp" type="number" placeholder="เช่น 135"></div>
+        <div class="field full"><label>ปัจจัยเสี่ยง/โรคร่วม</label><div class="checks">
+          <label class="chk"><input type="checkbox" name="dm">เบาหวาน/น้ำตาลสูง</label>
+          <label class="chk"><input type="checkbox" name="ht">ความดันโลหิตสูง</label>
+          <label class="chk"><input type="checkbox" name="dlp">ไขมันในเลือดสูง</label>
+          <label class="chk"><input type="checkbox" name="smoke">สูบบุหรี่หรือหยุดมาน้อยกว่า 15 ปี</label>
+          <label class="chk"><input type="checkbox" name="sed">ออกกำลังกายน้อย/นั่งนาน</label>
+          <label class="chk"><input type="checkbox" name="fam">พ่อแม่ พี่ หรือน้องมีโรคหัวใจหรือ stroke ก่อนวัย</label>
+        </div></div>
+        <div class="field full"><label>อาการที่สัมพันธ์กับหยุดหายใจขณะนอนหลับ</label><div class="checks">
+          <label class="chk"><input type="checkbox" name="snore">นอนกรนเสียงดัง</label>
+          <label class="chk"><input type="checkbox" name="apnea">มีคนสังเกตว่าหยุดหายใจ/สะดุ้งตื่นกลางคืน</label>
+          <label class="chk"><input type="checkbox" name="sleepy">ง่วงกลางวันมาก หลับง่าย หรือไม่สดชื่นตอนเช้า</label>
+        </div></div>
+      </div>
+      <div class="actions"><button class="primary" type="submit">ดูผลประเมิน</button><button class="ghost" type="button" onclick="resetForm()">ล้างข้อมูล</button></div>
+    </form>
+    <aside class="card">
+      <h2>ผลประเมิน</h2>
+      <p class="desc">ข้อสรุปจะแสดง 3 เรื่องเท่านั้น: อ้วนลงพุง, CV risk, sleep apnea risk</p>
+      <div id="out" class="empty">กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”</div>
+    </aside>
+  </section>
+
+  <section id="packagePage" class="packagePage hidden card">
+    <div class="actions"><button class="ghost" type="button" onclick="backToAssessment()">← กลับผลประเมิน</button><a class="btn outline" href="tel:025717799">โทร 02 571 7799</a></div>
+    <div id="pkgOut"></div>
+  </section>
+</main>
+
+<script>
+const LEAD_ENDPOINT = "";
+let currentPkg = "";
+let lastTopic = "ผู้ใหญ่: Weight & Metabolic";
+let lastSummary = "";
+const packages = {
+  p1:{name:"Package 1: ตรวจเพิ่มเติมสำหรับทั่วไป", old:2610, price:2500, free:"แถมตรวจสุขภาพฟัน", fit:"อายุน้อยกว่า 35 ปี หรือ CV risk ต่ำ ไม่มีโรคเสี่ยงหลัก", tests:["CBC","FBS","Chest X-ray","Creatinine","AST","ALP","Cholesterol","Triglyceride","HDL","Uric acid","Urine exam"]},
+  p2:{name:"Package 2: ความเสี่ยงโรคหัวใจและหลอดเลือด", old:3100, price:2900, free:"แถมตรวจสุขภาพฟัน", fit:"อายุ ≥35 ปี หรือมี DM/HT/DLP หรือ CV risk ≥10%", tests:["CBC","FBS","Chest X-ray","Creatinine","AST","ALP","Cholesterol","Triglyceride","HDL","Uric acid","Urine exam","ECG"]},
+  p3:{name:"Package 3: ความเสี่ยงหัวใจและ metabolic พิเศษ", old:4940, price:4800, free:"แถมตรวจสุขภาพฟัน", fit:"CV risk ร่วมกับน้ำหนักเกิน/อ้วนลงพุง หรือต้องประเมินช่องท้อง/ไขมันพอกตับ", tests:["CBC","FBS","Chest X-ray","Creatinine","AST","ALP","Cholesterol","Triglyceride","HDL","Uric acid","Urine exam","Ultrasound upper abdomen"]},
+  p4:{name:"Package 4: คลินิกลดน้ำหนัก 12 สัปดาห์", old:28100, price:25580, free:"รวม Package 3 + ฟิตเนสที่เป็นสุขยิม 1 เดือน", fit:"BMI obesity, อ้วนลงพุง หรือสงสัย sleep apnea ที่ควรเข้าคลินิกลดน้ำหนัก", tests:["ให้คำปรึกษาตลอดช่วงเวลาของ package","พิจารณาการรักษาด้วยยาฉีด","บริการฉีดยาสัปดาห์ละ 1 ครั้ง","คัดกรองโรคร่วมตามอายุและความเสี่ยงโดยใช้ Package 3","ฟิตเนสที่เป็นสุขยิมและคำปรึกษาการออกกำลังกาย ฟรี 1 เดือน","ติดตามน้ำหนัก มวลไขมัน และมวลกล้ามเนื้อทุก 1 เดือน","ประเมินภาวะหยุดหายใจขณะนอนหลับโดยแพทย์"], note:"**บริการนี้ไม่รวมค่าบริการฉีดยาเพิ่มเติมในแต่ละครั้ง มูลค่า 100 บาท"}
+};
+function fd(){const f=document.getElementById("metForm"),o={};new FormData(f).forEach((v,k)=>o[k]=v);f.querySelectorAll("input[type=checkbox]").forEach(c=>o[c.name]=c.checked);return o}
+function n(x){let v=parseFloat(x);return isFinite(v)?v:null}
+function bmi(w,h){if(!w||!h)return null;h=h/100;return w/(h*h)}
+function thaiCvRisk(o){let age=n(o.age),sex=o.sex,sbp=n(o.sbp),waistIn=n(o.waistIn),h=n(o.h);if(!age||!sex||!sbp||!waistIn||!h)return null;let waistCm=waistIn*2.54,SEX=sex==="m"?1:0,DM=o.dm?1:0,SMOKE=o.smoke?1:0,whr=waistCm/h;let score=(0.079*age)+(0.128*SEX)+(0.019350987*sbp)+(0.58454*DM)+(3.512566*whr)+(0.459*SMOKE);let risk=(1-Math.pow(0.978296,Math.exp(score-7.720484)))*100;let base=(0.079*age)+(0.128*SEX)+(0.019350987*120)+(3.512566*0.5);let baseRisk=(1-Math.pow(0.978296,Math.exp(base-7.720484)))*100;return {risk,baseRisk,ratio:risk/baseRisk,waistCm,eligible:age>=35&&age<=70}}
+function cvLevel(risk){if(risk===null)return{level:"mid",label:"ยังประเมินไม่ครบ",text:"กรุณากรอกอายุ เพศ ส่วนสูง รอบเอว ความดัน และปัจจัยเสี่ยง"};if(risk<10)return{level:"low",label:"ต่ำ",text:"ต่ำกว่า 10%"};if(risk<20)return{level:"mid",label:"ปานกลาง",text:"10–20%"};return{level:"high",label:"สูง",text:"ตั้งแต่ 20% ขึ้นไป"}}
+function waistCutoff(sex){return sex==="m"?35.5:sex==="f"?31.5:35.5}
+function metabolicSummary(o,B){let waistIn=n(o.waistIn),cutoff=waistCutoff(o.sex);let central=false,reasons=[];if(B!==null&&B>=25){central=true;reasons.push("BMI ≥25 กก./ม²")}if(waistIn!==null&&waistIn>=cutoff){central=true;reasons.push(`รอบเอว ≥${cutoff} นิ้ว`)}let text=central?`พบความเสี่ยงอ้วนลงพุง/น้ำหนักเกิน (${reasons.join(", ")})`:"ยังไม่เข้าเกณฑ์อ้วนลงพุงจากข้อมูลที่กรอก";return{central,text}}
+function osaSummary(o,B,central){let score=0,reasons=[];if(o.snore){score++;reasons.push("นอนกรนเสียงดัง")}if(o.apnea){score+=2;reasons.push("มีคนสังเกตว่าหยุดหายใจ/สะดุ้งตื่น")}if(o.sleepy){score++;reasons.push("ง่วงกลางวัน/ไม่สดชื่น")}if(B!==null&&B>=30){score++;reasons.push("BMI สูง")}if(central){score++;reasons.push("อ้วนลงพุง/รอบเอวสูง")}if(o.ht){score++;reasons.push("มีความดันสูง")}let level=score>=3?"high":score>=1?"mid":"low";let label=score>=3?"สูง":score>=1?"ควรคัดกรองเพิ่มเติม":"ยังไม่เด่นชัด";return{level,label,reasons,score}}
+function pill(level,label){return `<span class="pill ${level}">${label}</span>`}
+function cvBar(risk){if(risk===null)return"";let pos=Math.min(98,Math.max(1,risk));return `<div class="cvbar"><div class="mark" style="left:${pos}%"></div></div><div class="ticks"><span>&lt;10%</span><span>10–20%</span><span>&gt;20%</span></div>`}
+function summaryCard(title,level,label,body,extra=""){return `<div class="summaryCard ${level==="high"?"highBorder":""}"><h3>${title}</h3>${pill(level,label)}<div>${body}</div>${extra}</div>`}
+function testsToCheck(o,B,cv,central,osa){let list=["วัดความดันอย่างถูกวิธี และติดตามความดันที่บ้านหากค่าสูง","FBS หรือ HbA1c เพื่อคัดกรองเบาหวาน","Lipid profile: Cholesterol, Triglyceride, HDL และ LDL หากมี","Creatinine/eGFR เพื่อประเมินไต","Liver enzyme และพิจารณา ultrasound หากเสี่ยงไขมันพอกตับ","Urine exam และ urine albumin/protein หากมีเบาหวานหรือความดัน"];if(cv&&cv.risk>=10)list.push("ECG และพบแพทย์เพื่อประเมินความเสี่ยงหัวใจและหลอดเลือดเพิ่มเติม");if(central||(B!==null&&B>=25))list.push("ประเมินภาวะไขมันพอกตับและโรคร่วมของ obesity");if(osa.level!=="low")list.push("คัดกรอง sleep apnea เพิ่มเติม และพิจารณาส่งตรวจตามดุลยพินิจแพทย์");if(o.smoke)list.push("ปรึกษาเลิกบุหรี่และประเมินความเสี่ยงโรคปอด/หัวใจ");return list}
+function recommendPackages(o,B,cv,central,osa){
+  let age=n(o.age)||0;
+  let cvRisk=cv?cv.risk:null;
+  let highRisk=(cvRisk!==null&&cvRisk>=10)||o.dm||o.ht||o.dlp||o.smoke;
+
+  // ถ้าเข้า Package 4 จริง: obesity ชัดเจน หรือ OSA risk สูงร่วมกับ BMI >=25/central obesity
+  if((B!==null&&B>=30)||(osa.level==="high"&&((B!==null&&B>=25)||central))) return ["p4"];
+
+  // ถ้ามี Package 3 ไม่ต้องเสนอ Package 2 ซ้ำ
+  if(central||(B!==null&&B>=25)) return ["p3"];
+
+  // ถ้ามีแค่นอนกรนแต่ BMI <25 ให้เลือกตาม CV/metabolic risk
+  if(highRisk||age>=35) return ["p2"];
+
+  return ["p1"];
+}
+function packageCards(recs,osa){
+  let html=`<div class="pkgArea"><h3 class="pkgTitle">บริการที่อาจเหมาะกับคุณ</h3><div class="pkgGrid">`;
+  const osaAddon = osa.level!=="low";
+  recs.forEach(id=>{
+    const p=packages[id];
+    const extra = osaAddon && id!=="p4" ? `<p><b>แถมคัดกรองความเสี่ยงหยุดหายใจขณะนอนหลับเบื้องต้น</b></p>` : "";
+    html+=`<div class="pkgCard recommended"><span class="tag">เหมาะกับคุณ</span><h3>${p.name}</h3><p>${p.fit}</p>${extra}<div class="old">ตรวจแยก ${p.old.toLocaleString()} บาท</div><div class="price">${p.price.toLocaleString()} บาท</div><p>ประหยัด ${(p.old-p.price).toLocaleString()} บาท + ${p.free}</p><button type="button" onclick="showPackage('${id}',${osaAddon})">ดูรายละเอียด Package</button></div>`;
+  });
+  html+=`</div></div>`;
+  return html;
+}
+function evaluate(o){let B=bmi(n(o.w),n(o.h));let cv=thaiCvRisk(o);let cvRisk=cv?cv.risk:null;let cvL=cvLevel(cvRisk);let metabolic=metabolicSummary(o,B);let osa=osaSummary(o,B,metabolic.central);let recs=recommendPackages(o,B,cv,metabolic.central,osa);let bmiText=B!==null?`BMI ${B.toFixed(1)} กก./ม²`:"ยังคำนวณ BMI ไม่ได้";let cvText=cv?`Thai CV Risk 10 ปี ${cv.risk.toFixed(1)}% (${cvL.text})`:"ยังคำนวณ Thai CV Risk ไม่ครบข้อมูล";lastSummary=[metabolic.text,cvText,`OSA risk: ${osa.label}`,`Package: ${recs.join(",")}`].join(" | ");let html=`<div class="summaryGrid">`;html+=summaryCard("1) ภาวะอ้วนลงพุง / น้ำหนักเกิน",metabolic.central?"high":"low",metabolic.central?"พบความเสี่ยง":"ยังไม่เด่นชัด",`${bmiText}<br>${metabolic.text}`);html+=summaryCard("2) ความเสี่ยงโรคหลอดเลือดสมองและหลอดเลือดหัวใจ",cvL.level,cvL.label,cvText,cvBar(cvRisk));html+=summaryCard("3) ความเสี่ยงโรคหยุดหายใจขณะนอนหลับ",osa.level,osa.label,osa.reasons.length?`ปัจจัยที่พบ: ${osa.reasons.join(", ")}`:"ยังไม่พบอาการเด่นจากข้อมูลที่กรอก");html+=`</div>`;html+=`<div class="res"><h3>สิ่งที่ควรตรวจเพิ่มเติม</h3><ul>${testsToCheck(o,B,cv,metabolic.central,osa).map(x=>`<li>${x}</li>`).join("")}</ul></div>`;html+=packageCards(recs,osa);return html}
+function showPackage(id,osaAddon=false){
+  currentPkg=id;
+  const p=packages[id];
+  let testRows=[...p.tests];
+  if(osaAddon&&id!=="p4") testRows.push("แถมคัดกรองความเสี่ยงหยุดหายใจขณะนอนหลับเบื้องต้น");
+  document.getElementById("assessment").classList.add("hidden");
+  document.getElementById("packagePage").classList.remove("hidden");
+  document.getElementById("pkgOut").innerHTML=`<h2>${p.name}</h2><p class="desc">${p.fit}</p>${osaAddon&&id!=="p4"?'<div class="res riskHigh"><h3>บริการเสริมที่เหมาะกับคุณ</h3><ul><li>แถมคัดกรองความเสี่ยงหยุดหายใจขณะนอนหลับเบื้องต้น</li></ul></div>':''}<div class="totalBox"><div>ราคาตรวจแยก</div><div class="old">${p.old.toLocaleString()} บาท</div><div class="price">${p.price.toLocaleString()} บาท</div><div>ประหยัด ${(p.old-p.price).toLocaleString()} บาท</div><div>${p.free}</div></div><h3>สิ่งที่จะได้รับ</h3><table class="testTable"><thead><tr><th>รายการตรวจ/บริการ</th></tr></thead><tbody>${testRows.map(x=>`<tr><td>${x}</td></tr>`).join("")}</tbody></table><div class="warn">*ราคานี้ไม่รวมค่าแพทย์และค่ายา<br>${p.note||""}</div>${leadBox(id)}<div class="actions"><a class="btn primary" href="chollada_booking_google_sheet_connected.html">ขอนัดหมาย Package นี้</a><a class="btn outline" href="tel:025717799">โทรสอบถาม</a></div>`;
+}
+function backToAssessment(){document.getElementById("packagePage").classList.add("hidden");document.getElementById("assessment").classList.remove("hidden")}
+function leadBox(pkgId){const p=packages[pkgId];return `<div class="leadbox"><b>สนใจให้ทีมโรงพยาบาลติดต่อกลับหรือไม่?</b><p class="mini">ระบบจะส่งเฉพาะหัวข้อที่สนใจ Package ที่เลือก ผลสรุป ชื่อ และเบอร์โทรเท่านั้น</p><label class="chk"><input id="leadConsent" type="checkbox" onchange="document.getElementById('leadForm').classList.toggle('hidden',!this.checked)">ยินยอมให้โรงพยาบาลชลลดาติดต่อกลับ</label><div id="leadForm" class="leadform hidden"><div class="serviceChecks"><label class="chk"><input type="checkbox" name="interest" value="${p.name}" checked>สนใจ ${p.name}</label><label class="chk"><input type="checkbox" name="interest" value="ปรึกษาเรื่องลดน้ำหนัก">ปรึกษาเรื่องลดน้ำหนัก</label><label class="chk"><input type="checkbox" name="interest" value="ตรวจความเสี่ยงหัวใจและหลอดเลือด">ตรวจความเสี่ยงหัวใจและหลอดเลือด</label><label class="chk"><input type="checkbox" name="interest" value="ประเมินหยุดหายใจขณะนอนหลับ">ประเมินหยุดหายใจขณะนอนหลับ</label></div><input id="leadName" placeholder="ชื่อที่สะดวกให้ติดต่อ"><input id="leadPhone" placeholder="เบอร์โทรศัพท์"><button class="primary" type="button" onclick="sendLead()">ส่งข้อมูลให้ติดต่อกลับ</button><div id="leadStatus" class="status"></div></div></div>`}
+async function sendLead(){const name=document.getElementById("leadName").value.trim();const phone=document.getElementById("leadPhone").value.trim();const interests=[...document.querySelectorAll("input[name=interest]:checked")].map(x=>x.value).join(", ");const st=document.getElementById("leadStatus");if(!name||!phone){st.textContent="กรุณากรอกชื่อและเบอร์โทร";return}if(!interests){st.textContent="กรุณาเลือกหัวข้อที่สนใจอย่างน้อย 1 ข้อ";return}const payload={submittedAt:new Date().toLocaleString("th-TH"),topic:lastTopic,package:packages[currentPkg]?.name||"",interest:interests,resultSummary:lastSummary,name,phone,status:"รอติดต่อกลับ",source:"Chollada Adult Metabolic Check"};try{if(LEAD_ENDPOINT){await fetch(LEAD_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)})}st.textContent="ส่งข้อมูลเรียบร้อย ทีมงานจะติดต่อกลับ"}catch(e){st.textContent="ส่งข้อมูลไม่สำเร็จ กรุณาโทร 02 571 7799"}}
+function resetForm(){document.getElementById("metForm").reset();document.getElementById("out").className="empty";document.getElementById("out").innerHTML="กรอกข้อมูล จากนั้นกด “ดูผลประเมิน”"}
+document.getElementById("metForm").addEventListener("submit",e=>{e.preventDefault();const out=document.getElementById("out");out.className="";out.innerHTML=evaluate(fd());out.scrollIntoView({behavior:"smooth",block:"nearest"})});
+</script>
+</body>
+</html>
