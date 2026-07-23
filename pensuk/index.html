@@ -1,289 +1,32 @@
-<!doctype html>
-<html lang="th">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>บ้านเป็นสุข | โรงพยาบาลชลลดา</title>
-<style>
-:root{
-  --green:#2f8f79;--green2:#7fcfb6;--blue:#1f5f99;--gold:#d8a738;--cream:#fff8ea;
-  --bg:#f6fbfa;--text:#1f2937;--muted:#667085;--line:#e5ecea;--dark:#12312b;
-  --shadow:0 18px 48px rgba(16,24,40,.10);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",sans-serif;color:var(--text);
-  background:radial-gradient(circle at 8% 0%,rgba(127,207,182,.25),transparent 34%),
-             radial-gradient(circle at 92% 8%,rgba(216,167,56,.12),transparent 34%),
-             linear-gradient(180deg,#fbfffd 0%,var(--bg) 100%);
-}
-a{text-decoration:none;color:inherit}
-.wrap{width:min(1160px,calc(100% - 28px));margin:0 auto}
-.top{padding:24px 0 10px}
-.topbar{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}
-.back,.call{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:10px 14px;font-weight:950;box-shadow:0 8px 22px rgba(16,24,40,.05)}
-.back{background:#fff;color:var(--green);border:1px solid rgba(47,143,121,.30)}
-.call{background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}
-.hero{
-  min-height:440px;border-radius:34px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden;
-  background-size:cover;background-position:center;display:flex;align-items:flex-end;color:#fff;background-image:linear-gradient(105deg,rgba(18,49,43,.86),rgba(18,49,43,.48),rgba(18,49,43,.18)),url('../assets/pensuk/pensuk_care.jpg')
-}
-.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.22),transparent 30%)}
-.heroInner{position:relative;z-index:1;max-width:760px}
-.kicker{display:inline-flex;border-radius:999px;padding:7px 11px;font-size:13px;font-weight:950;color:#12312b;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.5);margin-bottom:12px}
-h1{margin:0 0 8px;font-size:clamp(42px,8vw,76px);line-height:1.02;letter-spacing:-.07em;text-shadow:0 4px 18px rgba(0,0,0,.22)}
-.tagline{font-size:clamp(20px,3.2vw,34px);font-weight:950;margin:0 0 10px;color:#fff9d7;text-shadow:0 2px 14px rgba(0,0,0,.22)}
-.lead{margin:0;color:rgba(255,255,255,.92);font-size:16px;line-height:1.75;max-width:720px}
-.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:16px;padding:12px 15px;font-weight:950;border:0}
-.primary{background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}
-.gold{background:linear-gradient(135deg,#f8dd82,#bc8617);color:#2b1a02}
-.outline{background:#fff;color:var(--green);border:1px solid rgba(47,143,121,.35)}
-.navPills{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
-.navPills a{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-weight:950;color:#344054}
-.panel{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:30px;padding:18px;box-shadow:var(--shadow);margin:16px 0}
-.sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:2px 4px 16px}
-.sectionHead h2{margin:0;color:var(--dark);font-size:30px;letter-spacing:-.05em}
-.sectionHead p{margin:5px 0 0;color:var(--muted);line-height:1.6}
-.quickGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.quickCard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:0 10px 24px rgba(16,24,40,.06)}
-.quickCard b{display:block;color:var(--green);font-size:28px;margin-bottom:4px}
-.quickCard span{color:var(--muted);line-height:1.6}
-.careGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.careCard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 10px 24px rgba(16,24,40,.06)}
-.careIcon{width:42px;height:42px;border-radius:15px;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;margin-bottom:10px}
-.careCard h3{margin:0 0 7px;color:var(--dark);font-size:18px;line-height:1.3}
-.careCard p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
-.levelStack{display:grid;gap:14px}
-.levelCard{background:#fff;border:1px solid var(--line);border-radius:26px;padding:16px;box-shadow:0 10px 24px rgba(16,24,40,.06);position:relative;overflow:hidden}
-.levelCard:before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:linear-gradient(90deg,var(--level),rgba(255,255,255,0))}
-.levelCard.private{--level:#2f8f79}.levelCard.assisted{--level:#1f5f99}.levelCard.high{--level:#d8a738}
-.levelHead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-top:6px}
-.levelLabel{display:inline-flex;border-radius:999px;background:color-mix(in srgb,var(--level) 12%,white);border:1px solid color-mix(in srgb,var(--level) 28%,white);color:var(--level);font-weight:950;padding:7px 11px}
-.levelHead strong{font-size:26px;color:var(--dark);letter-spacing:-.03em}
-.levelCard p{color:var(--muted);line-height:1.65;margin:10px 0}
-.levelGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.levelGrid h4{margin:0 0 7px;color:var(--dark)}
-.levelGrid ul{margin:0;padding-left:20px;color:#475467;line-height:1.65}
-.addonGrid,.contactGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.addonCard{background:#fff7e6;border:1px solid #fedf89;border-radius:24px;padding:16px}
-.addonCard h3{margin:0 0 7px;color:#7a4f01}
-.addonCard p{margin:0;color:#7a4f01;line-height:1.65}
-.addonCard span{display:inline-flex;margin-top:10px;background:#fff;border:1px solid #fedf89;color:#7a4f01;border-radius:999px;padding:7px 10px;font-weight:950;font-size:13px}
-.galleryGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.galleryCard{min-height:210px;border-radius:24px;background-size:cover;background-position:center;box-shadow:0 10px 24px rgba(16,24,40,.10);display:flex;align-items:flex-end;padding:14px;color:#fff;overflow:hidden}
-.galleryCard span{font-weight:950;text-shadow:0 2px 12px rgba(0,0,0,.35)}
-details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:0;overflow:hidden}
-details+details{margin-top:10px}
-summary{cursor:pointer;padding:14px 16px;font-weight:950;color:var(--dark);list-style:none}
-summary::-webkit-details-marker{display:none}
-details p{margin:0;padding:0 16px 15px;color:var(--muted);line-height:1.7}
-.contactBox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:16px}
-.contactBox h3{margin:0 0 8px;color:var(--dark)}
-.contactBox p,.contactBox li{color:var(--muted);line-height:1.65}
-.contactBox ul{padding-left:20px;margin:8px 0 0}
-.warning{background:#fff7e6;border:1px solid #fedf89;color:#7a4f01;border-radius:18px;padding:13px 15px;line-height:1.65;margin-top:14px}
-.stickyMobile{display:none;position:sticky;bottom:0;z-index:20;background:rgba(246,251,250,.94);border-top:1px solid var(--line);backdrop-filter:blur(12px);padding:10px 14px;gap:10px}
-.stickyMobile a{flex:1;text-align:center;border-radius:14px;padding:11px 8px;font-weight:950}
-.stickyMobile .home{background:#fff;color:var(--green);border:1px solid rgba(47,143,121,.35)}
-.stickyMobile .phone{background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}
-@media(max-width:1020px){.careGrid{grid-template-columns:repeat(2,1fr)}.galleryGrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.quickGrid,.levelGrid,.addonGrid,.contactGrid{grid-template-columns:1fr}.hero{min-height:390px;border-radius:24px;padding:18px}.panel{border-radius:24px;padding:15px}.careGrid{grid-template-columns:1fr}.galleryGrid{grid-template-columns:1fr}.topbar{align-items:stretch}.back,.call{flex:1}.stickyMobile{display:flex}}
-</style>
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <div class="topbar">
-      <a class="back" href="../">‹ กลับหน้าแรก</a>
-      <a class="call" href="tel:0865573183">โทร บ้านเป็นสุข 086 557 3183</a>
-    </div>
-
-    <section class="hero">
-      <div class="heroInner">
-        <div class="kicker">บ้านเป็นสุข x โรงพยาบาลชลลดา</div>
-        <h1>บ้านเป็นสุข</h1>
-        <div class="tagline">ดูแลด้วยใจ ให้เหมือนคนในครอบครัว</div>
-        <p class="lead">บริการดูแลผู้สูงอายุและผู้ป่วยพักฟื้น ใกล้โรงพยาบาลชลลดา พร้อมทีมแพทย์ พยาบาล กายภาพ และการดูแลแบบต่อเนื่องตามระดับความต้องการของแต่ละท่าน</p>
-        <div class="heroActions">
-          <a class="btn gold" href="#pricing">ดูราคาและระดับการดูแล</a>
-          <a class="btn primary" href="#contact">นัดเข้าชมสถานที่</a>
-          <a class="btn outline" href="tel:0865573183">โทรสอบถาม</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="navPills">
-      <a href="#services">บริการหลัก</a>
-      <a href="#pricing">ราคา / ระดับการดูแล</a>
-      <a href="#fit">เหมาะกับใคร</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">ติดต่อ</a>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-  <section class="panel">
-    <div class="quickGrid">
-      <div class="quickCard"><b>3 ครั้ง/สัปดาห์</b><span>โปรแกรมกายภาพพื้นฐานเพื่อฟื้นฟูสมรรถภาพทางกายและสร้างมวลกล้ามเนื้อ</span></div>
-      <div class="quickCard"><b>24 ชม.</b><span>มีทีมดูแลและระบบขอความช่วยเหลือสำหรับผู้พักอาศัยตามระดับการดูแล</span></div>
-      <div class="quickCard"><b>Close care</b><span>ประสานการประเมินและการรักษาเพิ่มเติมกับโรงพยาบาลชลลดาเมื่อจำเป็น</span></div>
-    </div>
-  </section>
-
-  <section class="panel" id="services">
-    <div class="sectionHead">
-      <div>
-        <h2>บริการหลัก</h2>
-        <p>ออกแบบเพื่อดูแลทั้งสุขภาพกาย ความปลอดภัย โภชนาการ และคุณภาพชีวิต</p>
-      </div>
-    </div>
-    <div class="careGrid"><div class="careCard"><div class="careIcon">1</div><h3>แพทย์และทีมพยาบาลประจำศูนย์</h3><p>ดูแลร่วมกับแพทย์จากโรงพยาบาลชลลดาและทีมพยาบาล เพื่อประเมินความปลอดภัยและติดตามอาการ</p></div><div class="careCard"><div class="careIcon">2</div><h3>กายภาพและประเมินสมรรถภาพทางกาย</h3><p>โปรแกรมพื้นฐานสัปดาห์ละ 3 ครั้ง เพื่อฟื้นฟูการเคลื่อนไหว สร้างมวลกล้ามเนื้อ และลดภาวะถดถอย</p></div><div class="careCard"><div class="careIcon">3</div><h3>ดูแลโภชนาการและสารอาหาร</h3><p>ดูแลเรื่องอาหาร สารอาหาร และความเหมาะสมตามภาวะสุขภาพของผู้พักอาศัย</p></div><div class="careCard"><div class="careIcon">4</div><h3>กิจกรรมสันทนาการและกระตุ้นสมอง</h3><p>กิจกรรมกลุ่ม กิจกรรมกระตุ้นและฟื้นฟูสมอง ความจำ และการมีส่วนร่วมทางสังคม</p></div><div class="careCard"><div class="careIcon">5</div><h3>เชื่อมต่อโรงพยาบาลชลลดา</h3><p>หากมีอาการเปลี่ยนแปลง สามารถประสานการตรวจรักษาเพิ่มเติมที่โรงพยาบาลชลลดา</p></div></div>
-  </section>
-
-  <section class="panel" id="pricing">
-    <div class="sectionHead">
-      <div>
-        <h2>อัตราค่าบริการและระดับการดูแล</h2>
-        <p>แยกตามห้องและระดับความช่วยเหลือที่เหมาะสม โดยอาจต้องประเมินเบื้องต้นก่อนเข้าพัก</p>
-      </div>
-    </div>
-    <div class="levelStack">
-      <article class="levelCard private">
-        <div class="levelHead">
-          <span class="levelLabel">Private Stay</span>
-          <strong>27,500 บาท/เดือน</strong>
-        </div>
-        <p>สำหรับผู้ที่ดูแลตัวเองได้ค่อนข้างดี</p>
-        <div class="levelGrid">
-          <div>
-            <h4>เหมาะกับใคร</h4>
-            <ul><li>ยังช่วยเหลือตนเองได้เป็นส่วนใหญ่</li><li>ต้องการห้องเดี่ยวและความเป็นส่วนตัว</li><li>ต้องการอยู่ในสิ่งแวดล้อมที่ปลอดภัย มีทีมดูแลใกล้ชิด</li><li>อาจต้องผ่านการประเมินโดยแพทย์เบื้องต้นก่อนเข้าพัก</li></ul>
-          </div>
-          <div>
-            <h4>จุดเด่นการดูแล</h4>
-            <ul><li>ห้องเดี่ยว</li><li>เรียกผู้ช่วยได้ตลอดผ่านอุปกรณ์สื่อสาร/ขอความช่วยเหลือภายในห้อง</li><li>Close medical care ร่วมกับโรงพยาบาลชลลดา</li><li>เหมาะกับผู้สูงอายุที่ยัง active หรือพักฟื้นระยะไม่ซับซ้อน</li></ul>
-          </div>
-        </div>
-      </article>
-    
-      <article class="levelCard assisted">
-        <div class="levelHead">
-          <span class="levelLabel">Assisted Care</span>
-          <strong>26,500 บาท/เดือน</strong>
-        </div>
-        <p>สำหรับผู้ที่ต้องการความช่วยเหลือบางส่วน</p>
-        <div class="levelGrid">
-          <div>
-            <h4>เหมาะกับใคร</h4>
-            <ul><li>ต้องการผู้ช่วยดูแลกิจวัตรบางส่วน</li><li>เดินหรือเคลื่อนไหวได้บ้าง แต่ต้องการคนช่วยสังเกตอาการ</li><li>ครอบครัวต้องการทีมดูแลใกล้ชิดตลอดวัน</li><li>ต้องการกายภาพพื้นฐานและกิจกรรมฟื้นฟูต่อเนื่อง</li></ul>
-          </div>
-          <div>
-            <h4>จุดเด่นการดูแล</h4>
-            <ul><li>ทีมพยาบาลและผู้ช่วยดูแลตลอด 24 ชั่วโมง</li><li>ดูแลกิจวัตรประจำวันตามระดับความช่วยเหลือที่ต้องการ</li><li>มีกายภาพพื้นฐาน 3 ครั้ง/สัปดาห์</li><li>Close medical care และประสานโรงพยาบาลเมื่อมีอาการเปลี่ยนแปลง</li></ul>
-          </div>
-        </div>
-      </article>
-    
-      <article class="levelCard high">
-        <div class="levelHead">
-          <span class="levelLabel">High Care / Hospital Zone</span>
-          <strong>พิจารณาหลังประเมินโดยแพทย์</strong>
-        </div>
-        <p>สำหรับผู้ที่ไม่สามารถช่วยเหลือตนเองได้หรือต้องดูแลใกล้ชิด</p>
-        <div class="levelGrid">
-          <div>
-            <h4>เหมาะกับใคร</h4>
-            <ul><li>ผู้ที่ไม่สามารถช่วยเหลือตนเองได้</li><li>มีโรคประจำตัวหลายโรคหรือภาวะซับซ้อน</li><li>ต้องการการติดตามจากทีมพยาบาลและแพทย์อย่างใกล้ชิด</li><li>ผู้ป่วยที่อาจเหมาะกับการดูแลในโซนที่พักผู้สูงอายุ/หอผู้ป่วย โรงพยาบาลชลลดา</li></ul>
-          </div>
-          <div>
-            <h4>จุดเด่นการดูแล</h4>
-            <ul><li>ประเมินความเหมาะสมโดยแพทย์ก่อนวางแผนดูแล</li><li>พิจารณาระดับการดูแลและสถานที่พักตามความปลอดภัย</li><li>เชื่อมต่อการตรวจรักษาเพิ่มเติมในโรงพยาบาลชลลดา</li><li>เหมาะกับผู้ป่วยกลุ่มซับซ้อนหรือมีความเสี่ยงสูง</li></ul>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="warning"><b>หมายเหตุ:</b> ราคาข้างต้นเป็นราคาเริ่มต้นตามระดับการดูแลที่ระบุ รายละเอียดสุดท้ายขึ้นกับการประเมินโดยทีมแพทย์/พยาบาลและความเหมาะสมด้านความปลอดภัยของผู้เข้าพัก</div>
-  </section>
-
-  <section class="panel" id="fit">
-    <div class="sectionHead">
-      <div>
-        <h2>เหมาะกับใคร</h2>
-        <p>กลุ่มผู้พักอาศัยที่บ้านเป็นสุขสามารถช่วยดูแลและประสานการฟื้นฟูได้</p>
-      </div>
-    </div>
-    <div class="quickGrid">
-      <div class="quickCard"><b>ผู้สูงอายุที่ต้องการที่พักดูแล</b><span>ต้องการความปลอดภัย อาหาร กิจกรรม และทีมดูแลใกล้ชิดมากกว่าการอยู่บ้านลำพัง</span></div>
-      <div class="quickCard"><b>Post-stroke / Post-op</b><span>ผู้ป่วยหลัง stroke หรือหลังผ่าตัด เช่น hip surgery, back surgery ที่ต้องการพักฟื้นและฟื้นฟูสมรรถภาพ</span></div>
-      <div class="quickCard"><b>ครอบครัวที่ต้องการ medical support</b><span>ต้องการการดูแลใกล้โรงพยาบาล มีแพทย์จาก รพ. ชลลดา ร่วมประเมินเมื่อมีอาการเปลี่ยนแปลง</span></div>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="sectionHead">
-      <div>
-        <h2>บริการเสริม</h2>
-        <p>สำหรับกรณีที่ต้องการการดูแลเฉพาะจุดเพิ่มเติม</p>
-      </div>
-    </div>
-    <div class="addonGrid"><div class="addonCard"><h3>โปรแกรมกายภาพแบบเข้มข้น</h3><p>สำหรับแก้ไขปัญหาสุขภาพเฉพาะจุด เช่น หลัง stroke, หลังผ่าตัด hip/back surgery หรือภาวะที่ต้องฟื้นฟูเฉพาะทาง</p><span>อาจมีค่าใช้จ่ายเพิ่มเติม</span></div><div class="addonCard"><h3>บริการฟื้นฟูแผลกดทับ</h3><p>สำหรับผู้ป่วยนอนนานหรือมีความเสี่ยงแผลกดทับ อาจมีค่าใช้จ่ายเพิ่มเติมตามการประเมิน</p><span>อาจมีค่าใช้จ่ายเพิ่มเติม</span></div></div>
-  </section>
-
-  <section class="panel">
-    <div class="sectionHead">
-      <div>
-        <h2>ภาพบรรยากาศ</h2>
-        <p>ตัวอย่างบรรยากาศการดูแลและพื้นที่พักอาศัย</p>
-      </div>
-    </div>
-    <div class="galleryGrid"><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url('../assets/pensuk/pensuk_care.jpg')"><span>ภาพรวมการดูแล</span></div><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url('../assets/pensuk/pensuk_care.jpg')"><span>บรรยากาศบ้านเป็นสุข</span></div><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url('../assets/pensuk/pensuk_care.jpg')"><span>ห้องเดี่ยว / Private Stay</span></div><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url('../assets/pensuk/pensuk_care.jpg')"><span>ห้องรวม / Assisted Care</span></div></div>
-  </section>
-
-  <section class="panel" id="faq">
-    <div class="sectionHead">
-      <div>
-        <h2>คำถามที่พบบ่อย</h2>
-        <p>คำตอบเบื้องต้นสำหรับครอบครัวที่สนใจบ้านเป็นสุข</p>
-      </div>
-    </div>
-    <details><summary>ต้องนัดเข้าชมสถานที่ก่อนไหม</summary><p>สามารถนัดเข้าชมสถานที่ก่อนได้ เพื่อประกอบการตัดสินใจ</p></details><details><summary>ผู้ที่มีโรคประจำตัวเข้าพักได้หรือไม่</summary><p>ผู้มีโรคประจำตัวสามารถเข้าพักได้ แต่จะได้รับการตรวจประเมินเพื่อแนะนำระดับการดูแลที่เหมาะสม เพื่อความปลอดภัยของผู้เข้าพักอาศัยและสมาชิกผู้ร่วมอาศัยภายในศูนย์</p></details><details><summary>มีกายภาพบำบัดกี่ครั้งต่อสัปดาห์</summary><p>กายภาพพื้นฐานเป็นโปรแกรมฟื้นฟูสมรรถภาพทางกายและสร้างมวลกล้ามเนื้อ 3 ครั้งต่อสัปดาห์</p></details><details><summary>หากมีอาการเปลี่ยนแปลง สามารถพาไปโรงพยาบาลได้หรือไม่</summary><p>หากมีอาการเปลี่ยนแปลงหรือเจ็บป่วยระหว่างการดูแล จะมีแพทย์จากโรงพยาบาลชลลดามาร่วมประเมิน หากจำเป็นจะส่งตัวไปประเมินต่อที่โรงพยาบาลเพิ่มเติม</p></details><details><summary>มีบริการสำหรับผู้ป่วยหลัง stroke / หลังผ่าตัดหรือไม่</summary><p>มีบริการสำหรับผู้ป่วยหลัง stroke และ post-op เช่น hip surgery หรือ back surgery เพื่อฟื้นฟูสมรรถภาพเฉพาะจุดและดูแลระหว่างพักฟื้น</p></details>
-  </section>
-
-  <section class="panel" id="contact">
-    <div class="sectionHead">
-      <div>
-        <h2>ช่องทางติดต่อ</h2>
-        <p>สามารถติดต่อบ้านเป็นสุขโดยตรง หรือผ่านโรงพยาบาลชลลดา</p>
-      </div>
-    </div>
-    <div class="contactGrid">
-      <div class="contactBox">
-        <h3>บ้านเป็นสุข</h3>
-        <p>โทร 086 557 3183<br>LINE OA: @pensukhouse</p>
-        <div class="heroActions">
-          <a class="btn primary" href="tel:0865573183">โทรบ้านเป็นสุข</a>
-          <a class="btn outline" href="../booking/?service=%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%AA%E0%B8%B8%E0%B8%82">ให้เจ้าหน้าที่ติดต่อกลับ</a>
-        </div>
-      </div>
-      <div class="contactBox">
-        <h3>โรงพยาบาลชลลดา</h3>
-        <p>ติดต่อผ่านโรงพยาบาลชลลดา<br>โทร 02 571 7799</p>
-        <ul>
-          <li>สอบถามการประเมินก่อนเข้าพัก</li>
-          <li>ประสานการตรวจรักษาเพิ่มเติม</li>
-          <li>สอบถามบริการร่วมกับโรงพยาบาล</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</main>
-
-<nav class="stickyMobile">
-  <a class="home" href="../">หน้าแรก</a>
-  <a class="phone" href="tel:0865573183">โทรบ้านเป็นสุข</a>
-</nav>
-</body>
-</html>
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>บ้านเป็นสุข | โรงพยาบาลชลลดา</title><style>
+:root{--green:#2f8f79;--blue:#1f5f99;--gold:#d8a738;--bg:#f6fbfa;--text:#1f2937;--muted:#667085;--line:#e5ecea;--dark:#12312b;--shadow:0 18px 48px rgba(16,24,40,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Thai",sans-serif;color:var(--text);background:radial-gradient(circle at 8% 0%,rgba(127,207,182,.25),transparent 34%),radial-gradient(circle at 92% 8%,rgba(216,167,56,.12),transparent 34%),linear-gradient(180deg,#fbfffd 0%,var(--bg) 100%)}a{text-decoration:none;color:inherit}button,input,select,textarea{font-family:inherit}.wrap{width:min(1160px,calc(100% - 28px));margin:0 auto}.top{padding:24px 0 10px}.topbar{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}.back,.call{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:10px 14px;font-weight:950;box-shadow:0 8px 22px rgba(16,24,40,.05)}.back{background:#fff;color:var(--green);border:1px solid rgba(47,143,121,.30)}.call{background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}.hero{min-height:470px;border-radius:34px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden;background-size:cover;background-position:center;display:flex;align-items:flex-end;color:#fff}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.22),transparent 30%)}.heroInner{position:relative;z-index:1;max-width:760px}.kicker{display:inline-flex;border-radius:999px;padding:7px 11px;font-size:13px;font-weight:950;color:#12312b;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.5);margin-bottom:12px}h1{margin:0 0 8px;font-size:clamp(42px,8vw,76px);line-height:1.02;letter-spacing:-.07em;text-shadow:0 4px 18px rgba(0,0,0,.22)}.tagline{font-size:clamp(20px,3.2vw,34px);font-weight:950;margin:0 0 10px;color:#fff9d7;text-shadow:0 2px 14px rgba(0,0,0,.22)}.lead{margin:0;color:rgba(255,255,255,.92);font-size:16px;line-height:1.75;max-width:720px}.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:16px;padding:12px 15px;font-weight:950;border:0;cursor:pointer}.primary{background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}.gold{background:linear-gradient(135deg,#f8dd82,#bc8617);color:#2b1a02}.outline{background:#fff;color:var(--green);border:1px solid rgba(47,143,121,.35)}.navPills{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}.navPills a{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-weight:950;color:#344054}.panel{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:30px;padding:18px;box-shadow:var(--shadow);margin:16px 0;background-size:cover;background-position:center}.sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:2px 4px 16px}.sectionHead h2{margin:0;color:var(--dark);font-size:30px;letter-spacing:-.05em}.sectionHead p{margin:5px 0 0;color:var(--muted);line-height:1.6}.quickGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.quickCard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:0 10px 24px rgba(16,24,40,.06)}.quickCard b{display:block;color:var(--green);font-size:28px;margin-bottom:4px}.quickCard span{color:var(--muted);line-height:1.6}.careGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.careCard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 10px 24px rgba(16,24,40,.06)}.careIcon{width:42px;height:42px;border-radius:15px;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;margin-bottom:10px}.careCard h3{margin:0 0 7px;color:var(--dark);font-size:18px;line-height:1.3}.careCard p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}.levelStack{display:grid;gap:14px}.levelCard{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 10px 24px rgba(16,24,40,.08);display:grid;grid-template-columns:320px 1fr}.levelPhoto{min-height:320px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:18px;color:#fff}.levelPhoto span{font-weight:950;font-size:28px;letter-spacing:-.04em;text-shadow:0 2px 12px rgba(0,0,0,.35)}.levelBody{padding:16px}.levelHead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}.levelHead h3{margin:0;color:var(--dark);font-size:25px;letter-spacing:-.04em}.levelHead p{margin:4px 0 0;color:var(--muted);font-weight:900}.levelHead strong{font-size:25px;color:var(--green);letter-spacing:-.03em}.levelGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.levelGrid h4{margin:0 0 7px;color:var(--dark)}.levelGrid ul{margin:0;padding-left:20px;color:#475467;line-height:1.65}.addonGrid,.contactGrid,.formGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.addonCard{background:#fff7e6;border:1px solid #fedf89;border-radius:24px;padding:16px}.addonCard h3{margin:0 0 7px;color:#7a4f01}.addonCard p{margin:0;color:#7a4f01;line-height:1.65}.galleryGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.galleryCard{min-height:230px;border-radius:24px;background-size:cover;background-position:center;box-shadow:0 10px 24px rgba(16,24,40,.10);display:flex;align-items:flex-end;padding:14px;color:#fff;overflow:hidden}.galleryCard span{font-weight:950;text-shadow:0 2px 12px rgba(0,0,0,.35)}details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:0;overflow:hidden}details+details{margin-top:10px}summary{cursor:pointer;padding:14px 16px;font-weight:950;color:var(--dark);list-style:none}summary::-webkit-details-marker{display:none}details p{margin:0;padding:0 16px 15px;color:var(--muted);line-height:1.7}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}label{font-weight:950;color:#344054}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:16px;padding:13px 14px;font-size:16px;background:#fff;outline:none}textarea{min-height:105px;resize:vertical}.checkList{display:grid;gap:9px}.checkRow{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px;line-height:1.55;font-weight:800;color:#344054}.checkRow input{width:18px;height:18px;margin-top:2px;flex:0 0 auto}.resultBox,.status{display:none;border-radius:20px;padding:14px;margin-top:14px;line-height:1.7}.show{display:block}.ok{background:#ecfdf3;border:1px solid #abefc6;color:#067647}.warn{background:#fff7e6;border:1px solid #fedf89;color:#7a4f01}.high,.err{background:#fef3f2;border:1px solid #fecdca;color:#b42318}.contactBox{background:#fff;border:1px solid var(--line);border-radius:24px;padding:16px}.contactBox h3{margin:0 0 8px;color:var(--dark)}.contactBox p,.contactBox li{color:var(--muted);line-height:1.65}.contactBox ul{padding-left:20px;margin:8px 0 0}.warning{background:#fff7e6;border:1px solid #fedf89;color:#7a4f01;border-radius:18px;padding:13px 15px;line-height:1.65;margin-top:14px}.stickyMobile{display:none;position:sticky;bottom:0;z-index:20;background:rgba(246,251,250,.94);border-top:1px solid var(--line);backdrop-filter:blur(12px);padding:10px 14px;gap:10px}.stickyMobile a{flex:1;text-align:center;border-radius:14px;padding:11px 8px;font-weight:950}.stickyMobile .home{background:#fff;color:var(--green);border:1px solid rgba(47,143,121,.35)}.stickyMobile .phone{background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}@media(max-width:1020px){.careGrid{grid-template-columns:repeat(2,1fr)}.galleryGrid{grid-template-columns:repeat(2,1fr)}.levelCard{grid-template-columns:1fr}.levelPhoto{min-height:250px}}@media(max-width:760px){.quickGrid,.levelGrid,.addonGrid,.contactGrid,.formGrid{grid-template-columns:1fr}.hero{min-height:410px;border-radius:24px;padding:18px}.panel{border-radius:24px;padding:15px}.careGrid{grid-template-columns:1fr}.galleryGrid{grid-template-columns:1fr}.topbar{align-items:stretch}.back,.call{flex:1}.stickyMobile{display:flex}}</style></head><body>
+<header class="top"><div class="wrap"><div class="topbar"><a class="back" href="../">‹ กลับหน้าแรก</a><a class="call" href="tel:0865573183">โทร บ้านเป็นสุข 086 557 3183</a></div><section class="hero" style="background-image:linear-gradient(105deg,rgba(18,49,43,.86),rgba(18,49,43,.52),rgba(18,49,43,.18)),url('../assets/pensuk/pensuk_overview.jpg')"><div class="heroInner"><div class="kicker">บ้านเป็นสุข x โรงพยาบาลชลลดา</div><h1>บ้านเป็นสุข</h1><div class="tagline">ดูแลด้วยใจ ให้เหมือนคนในครอบครัว</div><p class="lead">บริการดูแลผู้สูงอายุและผู้ป่วยพักฟื้น ใกล้โรงพยาบาลชลลดา พร้อมทีมแพทย์ พยาบาล กายภาพ และการดูแลแบบต่อเนื่องตามระดับความต้องการของแต่ละท่าน</p><div class="heroActions"><a class="btn gold" href="#pricing">ดูราคาและระดับการดูแล</a><a class="btn primary" href="#contact-form">ให้เจ้าหน้าที่ติดต่อกลับ</a><a class="btn outline" href="tel:0865573183">โทรสอบถาม</a></div></div></section><div class="navPills"><a href="#services">บริการหลัก</a><a href="#pricing">ราคา / ระดับการดูแล</a><a href="#screening">คัดกรองเบื้องต้น</a><a href="#faq">FAQ</a><a href="#contact-form">ติดต่อกลับ</a></div></div></header>
+<main class="wrap"><section class="panel"><div class="quickGrid"><div class="quickCard"><b>3 ครั้ง/สัปดาห์</b><span>โปรแกรมกายภาพพื้นฐานเพื่อฟื้นฟูสมรรถภาพทางกายและสร้างมวลกล้ามเนื้อ</span></div><div class="quickCard"><b>24 ชม.</b><span>มีทีมดูแลและระบบขอความช่วยเหลือสำหรับผู้พักอาศัยตามระดับการดูแล</span></div><div class="quickCard"><b>Close care</b><span>ประสานการประเมินและการรักษาเพิ่มเติมกับโรงพยาบาลชลลดาเมื่อจำเป็น</span></div></div></section>
+<section class="panel" id="services" style="background-image:linear-gradient(105deg,rgba(255,255,255,.96),rgba(255,255,255,.82)),url('../assets/pensuk/external_building.jpg')"><div class="sectionHead"><div><h2>บริการหลัก</h2><p>ออกแบบเพื่อดูแลทั้งสุขภาพกาย ความปลอดภัย โภชนาการ และคุณภาพชีวิต</p></div></div><div class="careGrid"><div class="careCard"><div class="careIcon">1</div><h3>แพทย์และทีมพยาบาลประจำศูนย์</h3><p>ดูแลร่วมกับแพทย์จากโรงพยาบาลชลลดาและทีมพยาบาล เพื่อประเมินความปลอดภัยและติดตามอาการ</p></div><div class="careCard"><div class="careIcon">2</div><h3>กายภาพและประเมินสมรรถภาพทางกาย</h3><p>โปรแกรมพื้นฐานสัปดาห์ละ 3 ครั้ง เพื่อฟื้นฟูการเคลื่อนไหว สร้างมวลกล้ามเนื้อ และลดภาวะถดถอย</p></div><div class="careCard"><div class="careIcon">3</div><h3>ดูแลโภชนาการและสารอาหาร</h3><p>ดูแลเรื่องอาหาร สารอาหาร และความเหมาะสมตามภาวะสุขภาพของผู้พักอาศัย</p></div><div class="careCard"><div class="careIcon">4</div><h3>กิจกรรมสันทนาการและกระตุ้นสมอง</h3><p>กิจกรรมกลุ่ม กิจกรรมกระตุ้นและฟื้นฟูสมอง ความจำ และการมีส่วนร่วมทางสังคม</p></div><div class="careCard"><div class="careIcon">5</div><h3>เชื่อมต่อโรงพยาบาลชลลดา</h3><p>หากมีอาการเปลี่ยนแปลง สามารถประสานการตรวจรักษาเพิ่มเติมที่โรงพยาบาลชลลดา</p></div></div></section>
+<section class="panel" id="pricing"><div class="sectionHead"><div><h2>ราคาและระดับการดูแล</h2><p>แยกตามห้องและระดับความช่วยเหลือที่เหมาะสม โดยควรประเมินเบื้องต้นก่อนเข้าพัก</p></div></div><div class="levelStack"><article class="levelCard"><div class="levelPhoto" style="background-image:linear-gradient(180deg,rgba(18,49,43,.16),rgba(18,49,43,.76)),url('../assets/pensuk/private_room.jpg')"><span>Private Stay</span></div><div class="levelBody"><div class="levelHead"><div><h3>ห้องเดี่ยว สำหรับผู้ที่ดูแลตัวเองได้</h3><p>Private Stay</p></div><strong>27,500 บาท/เดือน</strong></div><div class="levelGrid"><div><h4>เหมาะกับใคร</h4><ul><li>รู้ตัวดี สื่อสารและขอความช่วยเหลือได้</li><li>ช่วยเหลือตัวเองได้เป็นส่วนใหญ่</li><li>เดินหรือลุกนั่งได้ปลอดภัย หรือใช้อุปกรณ์ช่วยเดินได้เอง</li><li>ต้องการความเป็นส่วนตัว แต่ยังมีทีมดูแลใกล้ชิด</li></ul></div><div><h4>จุดเด่นการดูแล</h4><ul><li>ห้องเดี่ยว</li><li>เรียกผู้ช่วยได้ตลอดผ่านอุปกรณ์สื่อสาร/ขอความช่วยเหลือจากภายในห้อง</li><li>Close medical care ร่วมกับโรงพยาบาลชลลดา</li><li>ควรผ่านการประเมินโดยแพทย์เบื้องต้นก่อนเข้าพัก</li></ul></div></div></div></article><article class="levelCard"><div class="levelPhoto" style="background-image:linear-gradient(180deg,rgba(18,49,43,.16),rgba(18,49,43,.76)),url('../assets/pensuk/assisted_care.jpg')"><span>Assisted Care</span></div><div class="levelBody"><div class="levelHead"><div><h3>สำหรับผู้ที่ต้องการความช่วยเหลือบางส่วน</h3><p>Assisted Care</p></div><strong>26,500 บาท/เดือน</strong></div><div class="levelGrid"><div><h4>เหมาะกับใคร</h4><ul><li>ต้องการผู้ช่วยดูแลกิจวัตรประจำวันบางส่วน</li><li>รับประทานอาหาร เข้าห้องน้ำ หรือเคลื่อนไหวได้เองหรือช่วยเหลือเล็กน้อย</li><li>อาการทางการแพทย์คงที่ ไม่ต้องเฝ้าระวังใกล้ชิด</li><li>ครอบครัวต้องการทีมดูแลตลอด 24 ชั่วโมง</li></ul></div><div><h4>จุดเด่นการดูแล</h4><ul><li>ทีมพยาบาลและผู้ช่วยดูแลตลอด 24 ชั่วโมง</li><li>กายภาพพื้นฐาน 3 ครั้ง/สัปดาห์</li><li>ดูแลโภชนาการและกิจกรรมฟื้นฟู</li><li>ประสาน รพ. ชลลดาเมื่อมีอาการเปลี่ยนแปลง</li></ul></div></div></div></article><article class="levelCard"><div class="levelPhoto" style="background-image:linear-gradient(180deg,rgba(18,49,43,.16),rgba(18,49,43,.76)),url('../assets/pensuk/external_building.jpg')"><span>High Care / Hospital Zone</span></div><div class="levelBody"><div class="levelHead"><div><h3>สำหรับผู้ที่ต้องดูแลใกล้ชิดหรือซับซ้อน</h3><p>High Care / Hospital Zone</p></div><strong>พิจารณาหลังประเมินโดยแพทย์</strong></div><div class="levelGrid"><div><h4>เหมาะกับใคร</h4><ul><li>ไม่สามารถช่วยเหลือตนเองได้</li><li>มีภาวะซับซ้อนหรือมีอุปกรณ์ทางการแพทย์ที่ต้องดูแล</li><li>มีพฤติกรรมเสี่ยง เช่น เดินหลง ดึงสาย ลุกเองโดยไม่รู้ตัว หรือก้าวร้าว</li><li>ต้องได้รับการติดตามจากทีมพยาบาลและแพทย์อย่างใกล้ชิด</li></ul></div><div><h4>จุดเด่นการดูแล</h4><ul><li>ประเมินความเหมาะสมโดยแพทย์ก่อนวางแผนดูแล</li><li>อาจพิจารณาการดูแลในโซนที่พักผู้สูงอายุหรือหอผู้ป่วยโรงพยาบาลชลลดา</li><li>เชื่อมต่อการตรวจรักษาเพิ่มเติมในโรงพยาบาล</li><li>เหมาะกับผู้ป่วยกลุ่มซับซ้อนหรือความเสี่ยงสูง</li></ul></div></div></div></article></div><div class="warning"><b>หมายเหตุ:</b> ราคาข้างต้นเป็นราคาเริ่มต้นตามระดับการดูแลที่ระบุ รายละเอียดสุดท้ายขึ้นกับการประเมินโดยทีมแพทย์/พยาบาลและความเหมาะสมด้านความปลอดภัยของผู้เข้าพัก</div></section>
+<section class="panel" id="screening"><div class="sectionHead"><div><h2>คัดกรองลักษณะผู้เข้าพักเบื้องต้น</h2><p>ติ๊กข้อที่ตรงกับผู้สนใจเข้าพัก เพื่อช่วยประเมินเบื้องต้นว่าเหมาะกับระดับการดูแลใด</p></div></div><div class="checkList"><label class="checkRow"><input type="checkbox" name="screening" value="รู้ตัวดี ไม่มีภาวะสับสน"><span>รู้ตัวดี ไม่มีภาวะสับสน</span></label><label class="checkRow"><input type="checkbox" name="screening" value="สื่อสารและขอความช่วยเหลือได้"><span>สื่อสารและขอความช่วยเหลือได้</span></label><label class="checkRow"><input type="checkbox" name="screening" value="กดกริ่ง/โทรเรียกเจ้าหน้าที่ได้"><span>กดกริ่ง/โทรเรียกเจ้าหน้าที่ได้</span></label><label class="checkRow"><input type="checkbox" name="screening" value="เดินหรือลุกนั่งได้ปลอดภัย หรือใช้อุปกรณ์ช่วยเดินได้เอง"><span>เดินหรือลุกนั่งได้ปลอดภัย หรือใช้อุปกรณ์ช่วยเดินได้เอง</span></label><label class="checkRow"><input type="checkbox" name="screening" value="เข้าห้องน้ำ รับประทานอาหาร และทำกิจวัตรพื้นฐานได้เองหรือช่วยเหลือเล็กน้อย"><span>เข้าห้องน้ำ รับประทานอาหาร และทำกิจวัตรพื้นฐานได้เองหรือช่วยเหลือเล็กน้อย</span></label><label class="checkRow"><input type="checkbox" name="screening" value="ไม่มีพฤติกรรมเสี่ยง เช่น เดินหลง ดึงสาย ลุกเองโดยไม่รู้ตัว ก้าวร้าว"><span>ไม่มีพฤติกรรมเสี่ยง เช่น เดินหลง ดึงสาย ลุกเองโดยไม่รู้ตัว ก้าวร้าว</span></label><label class="checkRow"><input type="checkbox" name="screening" value="อาการทางการแพทย์คงที่ ไม่ต้องเฝ้าระวังใกล้ชิด"><span>อาการทางการแพทย์คงที่ ไม่ต้องเฝ้าระวังใกล้ชิด</span></label><label class="checkRow"><input type="checkbox" name="screening" value="ไม่มีอุปกรณ์ทางการแพทย์ที่ต้องดูแลซับซ้อน เช่น สายให้อาหารทางจมูก สายน้ำเกลือที่ต้องให้สารน้ำทางหลอดเลือด"><span>ไม่มีอุปกรณ์ทางการแพทย์ที่ต้องดูแลซับซ้อน เช่น สายให้อาหารทางจมูก สายน้ำเกลือที่ต้องให้สารน้ำทางหลอดเลือด</span></label></div><button class="btn primary" type="button" id="screenBtn" style="margin-top:12px">ประเมินเบื้องต้น</button><div id="screenResult" class="resultBox"></div></section>
+<section class="panel"><div class="sectionHead"><div><h2>บริการเสริม</h2><p>สำหรับกรณีที่ต้องการการดูแลเฉพาะจุดเพิ่มเติม</p></div></div><div class="addonGrid"><div class="addonCard"><h3>โปรแกรมกายภาพแบบเข้มข้น</h3><p>สำหรับแก้ไขปัญหาสุขภาพเฉพาะจุด เช่น หลัง stroke, หลังผ่าตัด hip/back surgery หรือภาวะที่ต้องฟื้นฟูเฉพาะทาง</p></div><div class="addonCard"><h3>บริการฟื้นฟูแผลกดทับ</h3><p>สำหรับผู้ป่วยนอนนานหรือมีความเสี่ยงแผลกดทับ อาจมีค่าใช้จ่ายเพิ่มเติมตามการประเมิน</p></div></div></section>
+<section class="panel"><div class="sectionHead"><div><h2>ภาพบรรยากาศ</h2><p>ตัวอย่างห้องพักและบรรยากาศโดยรอบ</p></div></div><div class="galleryGrid"><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url(../assets/pensuk/private_room.jpg)"><span>Private Stay / ห้องเดี่ยว</span></div><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url(../assets/pensuk/assisted_care.jpg)"><span>Assisted Care / ห้องรวม</span></div><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url(../assets/pensuk/external_sunflower.jpg)"><span>บรรยากาศโดยรอบ</span></div><div class="galleryCard" style="background-image:linear-gradient(180deg,rgba(18,49,43,.08),rgba(18,49,43,.62)),url(../assets/pensuk/external_building.jpg)"><span>อาคารบ้านเป็นสุข</span></div></div></section>
+<section class="panel" id="faq"><div class="sectionHead"><div><h2>คำถามที่พบบ่อย</h2><p>คำตอบเบื้องต้นสำหรับครอบครัวที่สนใจบ้านเป็นสุข</p></div></div><details><summary>ต้องนัดเข้าชมสถานที่ก่อนไหม</summary><p>สามารถนัดเข้าชมสถานที่ก่อนได้ เพื่อประกอบการตัดสินใจ</p></details><details><summary>ผู้ที่มีโรคประจำตัวเข้าพักได้หรือไม่</summary><p>ผู้มีโรคประจำตัวสามารถเข้าพักได้ แต่จะได้รับการตรวจประเมินเพื่อแนะนำระดับการดูแลที่เหมาะสม เพื่อความปลอดภัยของผู้เข้าพักอาศัยและสมาชิกผู้ร่วมอาศัยภายในศูนย์</p></details><details><summary>มีกายภาพบำบัดกี่ครั้งต่อสัปดาห์</summary><p>กายภาพพื้นฐานเป็นโปรแกรมฟื้นฟูสมรรถภาพทางกายและสร้างมวลกล้ามเนื้อ 3 ครั้งต่อสัปดาห์</p></details><details><summary>หากมีอาการเปลี่ยนแปลง สามารถพาไปโรงพยาบาลได้หรือไม่</summary><p>หากมีอาการเปลี่ยนแปลงหรือเจ็บป่วยระหว่างการดูแล จะมีแพทย์จากโรงพยาบาลชลลดามาร่วมประเมิน หากจำเป็นจะส่งตัวไปประเมินต่อที่โรงพยาบาลเพิ่มเติม</p></details><details><summary>มีบริการสำหรับผู้ป่วยหลัง stroke / หลังผ่าตัดหรือไม่</summary><p>มีบริการสำหรับผู้ป่วยหลัง stroke และ post-op เช่น hip surgery หรือ back surgery เพื่อฟื้นฟูสมรรถภาพเฉพาะจุดและดูแลระหว่างพักฟื้น</p></details></section>
+<section class="panel" id="contact-form"><div class="sectionHead"><div><h2>ให้เจ้าหน้าที่ติดต่อกลับ</h2><p>กรอกข้อมูลเบื้องต้นสำหรับบ้านเป็นสุขโดยเฉพาะ ไม่ต้องเลือกแพทย์</p></div></div><form id="pensukForm"><div class="formGrid"><div class="field"><label for="contactName">ชื่อผู้ติดต่อ</label><input id="contactName" placeholder="ชื่อ-นามสกุล"></div><div class="field"><label for="phone">เบอร์โทรศัพท์</label><input id="phone" inputmode="tel" placeholder="เช่น 08x-xxx-xxxx"></div><div class="field"><label for="residentName">ชื่อผู้สนใจเข้าพัก / ผู้อยู่อาศัย</label><input id="residentName" placeholder="ถ้ายังไม่สะดวก ระบุเป็นคุณพ่อ/คุณแม่ได้"></div><div class="field"><label for="residentAge">อายุผู้อยู่อาศัย</label><input id="residentAge" inputmode="numeric" placeholder="เช่น 78"></div><div class="field"><label for="careInterest">แบบการดูแลที่สนใจ</label><select id="careInterest"><option value="">เลือกแบบการดูแล</option><option>Private Stay / ห้องเดี่ยว 27,500 บาทต่อเดือน</option><option>Assisted Care / ต้องการความช่วยเหลือบางส่วน 26,500 บาทต่อเดือน</option><option>High Care / ต้องประเมินโดยแพทย์</option><option>ยังไม่แน่ใจ ต้องการให้ช่วยประเมิน</option><option>ต้องการนัดเข้าชมสถานที่</option></select></div><div class="field"><label for="mainCondition">ลักษณะผู้เข้าพักโดยรวม</label><select id="mainCondition"><option value="">เลือกข้อมูลใกล้เคียงที่สุด</option><option>ช่วยเหลือตนเองได้ดี</option><option>ต้องการช่วยเหลือบางส่วน</option><option>หลัง stroke / หลังผ่าตัด ต้องการพักฟื้น</option><option>นอนติดเตียง / ช่วยเหลือตนเองไม่ได้</option><option>มีอุปกรณ์ทางการแพทย์ที่ต้องดูแล</option><option>มีภาวะสับสนหรือพฤติกรรมเสี่ยง</option></select></div><div class="field full"><label for="medicalInfo">รายละเอียดสุขภาพ / โรคประจำตัว / สิ่งที่กังวล</label><textarea id="medicalInfo" placeholder="เช่น stroke มา 2 เดือน เดินได้ด้วย walker, เบาหวาน ความดัน, ต้องการกายภาพเพิ่ม, มีแผลกดทับ ฯลฯ"></textarea></div><div class="field full"><label for="screeningSummary">ผลคัดกรองเบื้องต้น</label><textarea id="screeningSummary" placeholder="กดปุ่มประเมินเบื้องต้นด้านบน ระบบจะเติมสรุปให้ หรือพิมพ์เองได้"></textarea></div></div><div class="heroActions"><button class="btn primary" type="submit">ส่งข้อมูลให้เจ้าหน้าที่ติดต่อกลับ</button><a class="btn outline" href="tel:0865573183">โทรบ้านเป็นสุข</a></div><div id="formStatus" class="status"></div></form></section>
+<section class="panel"><div class="contactGrid"><div class="contactBox"><h3>บ้านเป็นสุข</h3><p>โทร 086 557 3183<br>LINE OA: @pensukhouse</p></div><div class="contactBox"><h3>โรงพยาบาลชลลดา</h3><p>โทร 02 571 7799</p><ul><li>สอบถามการประเมินก่อนเข้าพัก</li><li>ประสานการตรวจรักษาเพิ่มเติม</li><li>สอบถามบริการร่วมกับโรงพยาบาล</li></ul></div></div></section></main><nav class="stickyMobile"><a class="home" href="../">หน้าแรก</a><a class="phone" href="tel:0865573183">โทรบ้านเป็นสุข</a></nav>
+<script>
+const PENSUK_ENDPOINT = "";
+const screenBtn=document.getElementById("screenBtn"), screenResult=document.getElementById("screenResult"), screeningSummary=document.getElementById("screeningSummary");
+function selectedScreening(){return [...document.querySelectorAll('input[name="screening"]:checked')].map(x=>x.value)}
+function assessPensuk(){const selected=selectedScreening(); const score=selected.length; let cls="warn", title="", text="";
+if(score>=7){cls="ok"; title="เบื้องต้นเหมาะกับ Private Stay หรือ Assisted Care"; text="ผู้เข้าพักมีลักษณะค่อนข้างปลอดภัย สื่อสารได้ อาการคงที่ และไม่มีอุปกรณ์ซับซ้อน อย่างไรก็ตามควรให้แพทย์/ทีมพยาบาลประเมินก่อนสรุประดับการดูแล";}
+else if(score>=5){cls="warn"; title="ควรให้ทีมประเมินเพิ่มเติมก่อนเลือกระดับการดูแล"; text="มีบางข้อที่ยังไม่ครบ อาจเหมาะกับ Assisted Care หรืออาจต้องวางแผนดูแลเฉพาะจุดเพิ่มเติม ขึ้นกับรายละเอียดสุขภาพและความปลอดภัย";}
+else{cls="high"; title="ควรประเมินโดยแพทย์ก่อน อาจต้องพิจารณา High Care / Hospital Zone"; text="ข้อมูลเบื้องต้นมีความเสี่ยงหรือความซับซ้อนมากขึ้น เช่น สื่อสารลำบาก ช่วยเหลือตัวเองได้น้อย มีพฤติกรรมเสี่ยง หรือมีอุปกรณ์ทางการแพทย์ที่ต้องดูแล";}
+const missing=[...document.querySelectorAll('input[name="screening"]:not(:checked)')].map(x=>x.value);
+const summary=title+"\n"+text+"\n\nข้อที่ตรง: "+(selected.length?selected.join(" | "):"-")+"\n\nข้อที่ยังไม่ตรง/ไม่แน่ใจ: "+(missing.length?missing.join(" | "):"-");
+screenResult.className="resultBox show "+cls; screenResult.innerHTML="<b>"+escapeHtml(title)+"</b><br>"+escapeHtml(text)+"<br><br><b>จำนวนข้อที่ตรง:</b> "+score+" / 8"; screeningSummary.value=summary;}
+screenBtn.addEventListener("click", assessPensuk);
+document.getElementById("pensukForm").addEventListener("submit", async e=>{e.preventDefault(); const status=document.getElementById("formStatus"); status.className="status"; const payload={submittedAt:new Date().toLocaleString("th-TH"),module:"Pensuk House",contactName:document.getElementById("contactName").value.trim(),phone:document.getElementById("phone").value.trim(),residentName:document.getElementById("residentName").value.trim(),residentAge:document.getElementById("residentAge").value.trim(),careInterest:document.getElementById("careInterest").value,mainCondition:document.getElementById("mainCondition").value,medicalInfo:document.getElementById("medicalInfo").value.trim(),screeningSummary:document.getElementById("screeningSummary").value.trim(),selectedScreening:selectedScreening().join(" | "),source:"Chollada LINE OA Portal - Pensuk",status:"รอติดต่อกลับ",pageUrl:location.href};
+if(!payload.contactName||!payload.phone){status.className="status err show";status.textContent="กรุณากรอกชื่อผู้ติดต่อและเบอร์โทรศัพท์";return}
+try{if(PENSUK_ENDPOINT){await fetch(PENSUK_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)})}
+status.className="status ok show"; status.innerHTML="<b>ส่งข้อมูลเรียบร้อย</b><br>เจ้าหน้าที่บ้านเป็นสุขจะติดต่อกลับเพื่อให้ข้อมูลและประเมินความเหมาะสมเบื้องต้น"; e.target.reset(); document.querySelectorAll('input[name="screening"]').forEach(x=>x.checked=false);}
+catch(err){status.className="status err show";status.textContent="ส่งข้อมูลไม่สำเร็จ กรุณาโทร 086 557 3183";}});
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+</script></body></html>
